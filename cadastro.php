@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-CAD">
         
         <form action="./cadastrobd.php" method="post">
             <h1>ADICIONAR ITEM</h1>

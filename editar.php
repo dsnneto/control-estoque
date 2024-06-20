@@ -32,6 +32,10 @@ require_once ("./editar-view.php");
                 <div class="col">
                     <label for="quantidade">NOME</label>
                     <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
+                    <button clas="bnt-exc"
+                        type="submit" 
+                        value="E X C L U I R"
+                        style="background-color: red; border: 1px solid red;">
                 </div>
             </div>
 
@@ -46,6 +50,12 @@ require_once ("./editar-view.php");
                 <div class="col">
                     <label for="minimo">quantidade minima</label>
                     <input type="number" value="<?=$resultado['quantidademinimaEstoque']?>"name="minimo" id="minimo" placeholder="Digite a quantidade  minima de produtos">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                
                 </div>
             </div>
 

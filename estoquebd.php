@@ -2,7 +2,7 @@
 require_once ("./conexao/conexao.php");
 
 try {
-    $comandoSQL = "SELECT * FROM estoque LIMIT 20";
+    $comandoSQL = "SELECT * FROM estoque";
 
     $dadosSelecionados = $conexao->query($comandoSQL);
 
