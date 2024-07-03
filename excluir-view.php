@@ -8,7 +8,7 @@ try {
         $comandoSQL->execute(array(":id"=>$id));
         $resultado = $comandoSQL->fetch();
     
-    echo $comandoSQL->debugDumpParams();
+    //echo $comandoSQL->debugDumpParams();
 
 } catch (\Throwable $th) {
     echo ("Erro no id");

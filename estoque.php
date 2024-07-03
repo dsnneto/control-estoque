@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <form action=""></form>
     <div class="opt">
         </div>
         </div>
@@ -59,6 +59,7 @@
 <button class="bnt-voltar-estoque">
     <a href="index.php">INICIO</a>
 </button>
+
 </table>
 </div>
 </body>

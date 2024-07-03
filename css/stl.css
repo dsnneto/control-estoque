@@ -10,13 +10,13 @@ body{
 }
 
 .conteudo, form{
+    outline:  none;
     display: flex;
     justify-content: center; /* centraliza na horizontal */
     align-items: center; /* centraliza na vertical */
     flex-direction: column;
 }
 .container{
-   
     margin: 0 auto; 
 }
 
@@ -70,6 +70,7 @@ tr:hover{
 
 input[type="text"], input[type="tel"],
 input[type="password"]{
+    outline:  none;
     height: 35px; 
     width: 100%; 
     border-radius: 5px; 
@@ -79,13 +80,15 @@ input[type="password"]{
 }
 
 input[type="reset"]{
+    outline:  none;
     padding: 20px 40px;
-    border: none #616161;
+    border: none #3b3b3b;
     cursor: pointer;
     border-radius: 5px;
 }
 
 input[type="submit"]{
+    outline:  none;
     padding: 20px 40px;
     border: none;
     cursor: pointer;
@@ -93,6 +96,7 @@ input[type="submit"]{
     background-color: rgb(255, 189, 65);
     color: rgb(0, 0, 0);
 }
+
 
 
 /* MENU */
@@ -133,7 +137,7 @@ input[type="submit"]{
 
 .bnt-voltar-estoque{
     border:none;
-    background-color: #a7a5a5;
+    background-color: #868686;
     border-radius: 3px;
     padding: 3px 4px;
 }
@@ -144,6 +148,13 @@ input[type="submit"]{
     border-radius: 5px;
     background-color: rgb(255, 189, 65);
     color: white;
+}
+
+.bnt-voltaredit{
+        padding: 20px 40px;
+        border: none #616161;
+        cursor: pointer;
+        border-radius: 5px;
 }
 
 

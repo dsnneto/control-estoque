@@ -1,0 +1,102 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: rgb(142, 135, 235);
+}
+
+form {
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+}
+
+
+
+.conteudo, form{
+    outline:  none;
+    display: flex;
+    justify-content: center; /* centraliza na horizontal */
+    align-items: center; /* centraliza na vertical */
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    gap: 5px;
+    margin: 10px;
+}
+
+.col{
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+input[type="reset"]{
+    outline:  none;
+    padding: 20px 40px;
+    border: none #3b3b3b;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]{
+    outline:  none;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+input {
+    color: #000000;
+    font-size: 28px;
+    width: 100%;
+    padding: 20px 5px 5px;
+    background-color: skyblue;
+    border: solid 1px #fff;
+    border-radius: 4px;
+}
+
+
+/*botões*/
+
+a{
+    text-decoration: none;
+    color: black;
+}
+.bnt-voltar-estoque{
+    border:none;
+    background-color: #868686;
+    border-radius: 3px;
+    padding: 20px 40px;
+}
+BUTTON{
+    padding: 20px 40px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.bnt-voltaredit{
+        padding: 20px 40px;
+        border: none #616161;
+        cursor: pointer;
+        border-radius: 5px;
+}
+
+

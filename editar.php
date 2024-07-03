@@ -1,13 +1,11 @@
-<!--Cadastrar de novos produtos -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Item</title>
-    <link rel="stylesheet" href="./css/STL.css">
+    <link rel="stylesheet" href="./css/stl.css">
 </head>
 
 <body>
@@ -32,10 +30,6 @@ require_once ("./editar-view.php");
                 <div class="col">
                     <label for="quantidade">NOME</label>
                     <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
-                    <button clas="bnt-exc"
-                        type="submit" 
-                        value="E X C L U I R"
-                        style="background-color: red; border: 1px solid red;">
                 </div>
             </div>
 
@@ -46,9 +40,9 @@ require_once ("./editar-view.php");
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="opacity: 0;">
                 <div class="col">
-                    <label for="minimo">quantidade minima</label>
+                    <label for="minimo" >quantidade minima</label>
                     <input type="number" value="<?=$resultado['quantidademinimaEstoque']?>"name="minimo" id="minimo" placeholder="Digite a quantidade  minima de produtos">
                 </div>
             </div>
@@ -61,8 +55,12 @@ require_once ("./editar-view.php");
 
             <div class="row">
                 <div class="col">
-                    <input type="reset" value="VOLTAR">
+                    <button class="bnt-voltaredit">VOLTAR</button>
                     <input type="submit" value="SALVAR">
+                    <input 
+                        type="submit" 
+                        value="E X C L U I R"
+                        style="background-color: red; border: 1px solid red;">
                 </div>
             </div>
 
