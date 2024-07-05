@@ -70,6 +70,34 @@ input {
     border-radius: 4px;
 }
 
+input[type="text"]{
+    outline:  none;
+    height: 35px; 
+    width: 100%; 
+    border-radius: 5px; 
+    border: 1px solid #888;
+    padding: 5px; 
+    font-weight: 1.2rem; /
+}
+
+input[type="reset"]{
+    outline:  none;
+    padding: 20px 40px;
+    border: none #3b3b3b;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]{
+    outline:  none;
+    padding: 20px 40px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(255, 189, 65);
+    color: rgb(0, 0, 0);
+}
+
 
 /*botões*/
 
@@ -81,10 +109,10 @@ a{
     border:none;
     background-color: #868686;
     border-radius: 3px;
-    padding: 20px 40px;
+    padding: 40px;
 }
 BUTTON{
-    padding: 20px 40px;
+    padding:  40px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -93,10 +121,14 @@ BUTTON{
 }
 
 .bnt-voltaredit{
-        padding: 20px 40px;
+        padding:  40px;
         border: none #616161;
         cursor: pointer;
         border-radius: 5px;
+
 }
+
+
+
 
 

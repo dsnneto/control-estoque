@@ -47,45 +47,20 @@ tr:hover{
 
 /* TABELA FINAL */
 
-.titulo{
-    align-items: center;
-    font-weight: lighter;
-    display: flex;
-    justify-content: center;
-    background-color: #ccc;
-    padding: 5px;
-}
-
-.row{
-    display: flex;
-    gap: 5px;
-    margin: 10px;
-}
-
-.col{
-    width: 100%;
-}
 
 
 
-input[type="text"], input[type="tel"],
-input[type="password"]{
+input[type="text"]{
     outline:  none;
     height: 35px; 
-    width: 100%; 
+    
     border-radius: 5px; 
     border: 1px solid #888;
     padding: 5px; 
     font-weight: 1.2rem; /
 }
 
-input[type="reset"]{
-    outline:  none;
-    padding: 20px 40px;
-    border: none #3b3b3b;
-    cursor: pointer;
-    border-radius: 5px;
-}
+
 
 input[type="submit"]{
     outline:  none;
@@ -99,28 +74,7 @@ input[type="submit"]{
 
 
 
-/* MENU */
-
-.menu ul{
-    display: flex;
-    height: 70px;
-    background-color: deepskyblue;
-    justify-content: end;
-    align-items: center;
-    list-style-type: none;
-}
-
-
-
-.menu ul li:hover{
-    background-color: rgb(0, 0, 0);
-    color: white;
-}
-
-.menu ul a{
-    text-decoration: none;
-    color: black;
-}
+/* tabela-estoque */
 
 .qtdMin {
     background-color: rgb(255, 189, 65); 
@@ -140,6 +94,7 @@ input[type="submit"]{
     background-color: #868686;
     border-radius: 3px;
     padding: 3px 4px;
+    
 }
 .bnt-vizu-cadastro{
     padding: 20px 40px;

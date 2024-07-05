@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/stl.css">
+    <link rel="stylesheet" href="./css/estilovizu.css">
     <title>ESTOQUE</title>
 </head>
 
 <body>
-    <form action=""></form>
-    <div class="opt">
-        </div>
+    
         </div>
         <div class="container">
             <table>
@@ -56,12 +54,24 @@
                     ?>
 
 </tbody>
-<button class="bnt-voltar-estoque">
-    <a href="index.php">INICIO</a>
-</button>
+    <div class="search">
+       
+        <form action="./search.php" method="GET">
+            
+            <input type="text" name="search" value="" width="100PX">
+            <button type="$_POST">BUSCAR</button>
+
+        </form>
+        <button class="bnt-voltar-estoque">
+            <a href="index.php">INICIO</a>
+        </button>
+    </div>
+
 
 </table>
 </div>
+
+
 </body>
 
 </html>
