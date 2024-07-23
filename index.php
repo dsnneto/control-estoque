@@ -12,9 +12,13 @@
     <h1>ESTOQUE TI</h1>
     <ul>
         <label><a href="./estoque.php">VIZUALIZAR ESTOQUE</a></label><br>
-        <label><a href="./cadastro.php">CADASTRAR</a></label> 
+        <label><a href="./cadastro.php"> ADICIONAR PRODUTO</a></label><br>
+        <label><a href="./users/cadastro.php" >CADASTRAR Usuário</a></label> 
+
+        
     </ul>
     </div>
+
     
 
 </body>

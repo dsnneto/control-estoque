@@ -5,7 +5,6 @@
     display: flex;
     justify-content: center; /* centraliza na horizontal */
     align-items: center; /* centraliza na vertical */
-    flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

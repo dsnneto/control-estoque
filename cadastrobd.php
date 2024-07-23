@@ -34,7 +34,6 @@ try {
     ));
 
     if ($comandoSQL->rowCount() > 0) {
-        echo "inserido com sucesso";
         header("location:./cadastro.php");
         exit();
     } else {
