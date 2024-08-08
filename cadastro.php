@@ -54,7 +54,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" form="" value="Submit">SALVAR</button>
+                    <button type="submit">SALVAR</button>
                     <button ><a href="estoque.php">VIZUALIZAR</a></button>
                 </div>
             </div>
