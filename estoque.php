@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estilovizu.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>ESTOQUE</title>
 </head>
 
 <body>
-    
-        </div>
         <div class="container">
             <table>
             
@@ -45,7 +45,7 @@
                     <td text align="center"><a href="./editar.php?id=<?= $linha['IDEstoque']; ?>">
                     EDITAR
                     </a></td> 
-                    <td text align="center" ><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>  
+                    <td text align="center" ><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">X</button></td>  
                     </tr>
                     
                     <?php
@@ -53,25 +53,98 @@
                     }
                     ?>
 
-</tbody>
+            </tbody>
+
     <div class="search">
-       
-        <form action="./search.php" method="GET">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        
+                <div class="container-fluid">
+                <form action="./search.php" method="GET">
+                    
+                    <input type="text" name="search" value="" width="100PX">
+                    <button type="$_POST">BUSCAR</button>
             
-            <input type="text" name="search" value="" width="100PX">
-            <button type="$_POST">BUSCAR</button>
-
-        </form>
-        <button class="bnt-voltar-estoque">
-            <a href="index.php">INICIO</a>
-        </button>
+                </form>
+                <button class="bnt-voltar-estoque">
+                    <a href="index.php">INICIO</a>
+                </button>
+                <span>user</span>
+            
+                </div>
+        </nav>
     </div>
-
-
 </table>
 </div>
 
 
-</body>
 
+                <!------------------------------------------MODAL EX------------------------------------>
+
+
+<body>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <!---->
+        <div class="modal-body">
+        <h1 class="titulo">Excluir</h1>
+        <div class="container">
+            
+            <?php
+                $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+                require_once("./excluir-view.php");
+            ?>
+            
+            <form action="./excluirbd.php" method="POST">
+
+                <div class="row">
+                    <div class="col">
+                        <label for="nome">DESEJA REALMENTE EXCLUIR O ITEM: <b><?=$resultado["nomeEstoque"]?></b> ?</label>
+                        <input
+                        type="hidden" 
+                            name="id" 
+                            id="id"
+                            value="<?=$resultado["IDEstoque"]; ?>">
+                        </input>
+
+                        <input
+                        type="hidden" 
+                            name="nome" 
+                            id="nome"
+                            value="<?=$resultado["nomeEstoque"]; ?>"
+                            disabled>
+                        </input>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <input type="reset" value="VOLTAR">
+                        <input 
+                            type="submit" 
+                            value="E X C L U I R"
+                            style="background-color: red; border: 1px solid red;">
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">FECHAR</button>
+        </div>
+
+        </div>
+    </div>
+    </div>
+
+    </body>
 </html>
+
+
+
+<!------------------------------------------MODAL EDIT------------------------------------>
+

@@ -34,6 +34,7 @@ try {
     ));
 
     if ($comandoSQL->rowCount() > 0) {
+        
         header("location:./cadastro.php");
         exit();
     } else {

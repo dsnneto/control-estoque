@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Item</title>
-    <link rel="stylesheet" href="./css/stl.css">
+    <link rel="stylesheet" href="./css/estilovizu.css">
 </head>
 
 <body>
@@ -28,7 +28,7 @@ require_once ("./editar-view.php");
 
         <div class="row">
                 <div class="col">
-                    <label for="quantidade">NOME</label>
+                    <label for="quantidade" disabled>NOME</label>
                     <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
                 </div>
             </div>

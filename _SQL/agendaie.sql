@@ -32,7 +32,9 @@ CREATE TABLE `estoque` (
 -- Extraindo dados da tabela `estoque`
 --
 
-INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`) 
+INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`) VALUES (
+  
+)
 -- --------------------------------------------------------
 
 --
