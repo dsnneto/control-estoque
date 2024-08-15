@@ -96,7 +96,6 @@
 
                 <div class="row">
                     <div class="col">
-                        <label for="nome">DESEJA REALMENTE EXCLUIR O ITEM: <b><?=$resultado["nomeEstoque"]?></b> ?</label>
                         
                         <input
                         type="hidden"  name="id" id="id" value="<?=$resultado["IDEstoque"]; ?>">

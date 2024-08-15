@@ -30,7 +30,7 @@ try {
     ));
 
     if ($comandoSQL->rowCount() > 0) {
-        header("location:./estoque.php");
+        header("location:../estoque.php");
         exit();
     } else {
         echo ("Erro na atualização");
