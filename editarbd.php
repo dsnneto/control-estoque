@@ -37,8 +37,5 @@ try {
     }
 } catch (PDOException $erro) {
 
-    echo "<pre>";
-    echo $comandoSQL->debugDumpParams();
-    echo "</pre>";
     echo (" Erro editar bd ");
 }

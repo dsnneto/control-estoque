@@ -6,7 +6,7 @@ try {
     $sql = "SELECT * FROM estoque WHERE IDEstoque=:id";
     $comandoSQL = $conexao->prepare($sql);
     $comandoSQL->execute(array(":id" => $id));
-    $resultado = $comandoSQL->fetch();
+    $resultado = $comandoSQL;
     
 
 } catch (\Throwable $th) {

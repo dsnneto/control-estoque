@@ -14,17 +14,17 @@
         <div class="container">
             <table>
             
-            <thead>
-                <tr>
-                    <!--<th >cod <br> prod</th>-->
-                    <th>NOME</th>
-                    <th>QUANTIDADE</th>
-                    <th>CONTROLE</th>
-                    <th>EX</th>
+                <thead>
+                    <tr>
 
-                </tr>
-            </thead>
-            <tbody>
+                        <th>NOME</th>
+                        <th>QUANTIDADE</th>
+                        <th>CONTROLE</th>
+                        <th>EX</th>
+
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
                     require_once("./estoquebd.php") ;
                     if ($totalRegistros > 0) {
@@ -42,10 +42,8 @@
                     <!--<td text align="center"><?= $linha["IDEstoque"]; ?></td>-->
                     <td><?= $linha["nomeEstoque"]; ?></td>
                     <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
-                    <td text align="center"><a href="./editar.php?id=<?= $linha['IDEstoque']; ?>">
-                    EDITAR
-                    </a></td> 
-                    <td text align="center" ><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">X</button></td>  
+                    <td text align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal-edit">edit</button></td> 
+                    <td text align="center" ><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">x</button></td>  
                     </tr>
                     
                     <?php
@@ -53,76 +51,65 @@
                     }
                     ?>
 
-            </tbody>
 
-    <div class="search">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        
-                <div class="container-fluid">
-                <form action="./search.php" method="GET">
+                </tbody>
+
+                <!------------------------------------------BARRA DE NAV------------------------------------>
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                
+                        <div class="container-fluid">
+                        <form action="./search.php" method="GET">
+                            
+                            <input type="text" name="search" value="" width="100PX">
+                            <button type="$_POST">BUSCAR</button>
                     
-                    <input type="text" name="search" value="" width="100PX">
-                    <button type="$_POST">BUSCAR</button>
-            
-                </form>
-                <button class="bnt-voltar-estoque">
-                    <a href="index.php">INICIO</a>
-                </button>
-                <span>user</span>
-            
-                </div>
-        </nav>
-    </div>
-</table>
+                        </form>
+                        <button class="bnt-voltar-estoque">
+                            <a href="index.php">INICIO</a>
+                        </button>
+                        <span>user</span>
+                    
+                        </div>
+                </nav>
+ 
+            </table>
 </div>
-
-
-
                 <!------------------------------------------MODAL EX------------------------------------>
 
-
 <body>
-    <!-- The Modal -->
     <div class="modal fade" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
 
-        <!-- Modal Header -->
-        <!---->
+        
         <div class="modal-body">
         <h1 class="titulo">Excluir</h1>
         <div class="container">
             
             <?php
                 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-                require_once("./excluir-view.php");
+                require_once("./excluirbd.php");
+                
             ?>
             
-            <form action="./excluirbd.php" method="POST">
+            <form action="./excluir-view.php" method="POST">
 
                 <div class="row">
                     <div class="col">
                         <label for="nome">DESEJA REALMENTE EXCLUIR O ITEM: <b><?=$resultado["nomeEstoque"]?></b> ?</label>
+                        
                         <input
-                        type="hidden" 
-                            name="id" 
-                            id="id"
-                            value="<?=$resultado["IDEstoque"]; ?>">
+                        type="hidden"  name="id" id="id" value="<?=$resultado["IDEstoque"]; ?>">
                         </input>
 
                         <input
-                        type="hidden" 
-                            name="nome" 
-                            id="nome"
-                            value="<?=$resultado["nomeEstoque"]; ?>"
-                            disabled>
+                        type="hidden"  name="nome"  id="nome" value="<?=$resultado["nomeEstoque"]; ?>" disabled>
                         </input>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <input type="reset" value="VOLTAR">
                         <input 
                             type="submit" 
                             value="E X C L U I R"
@@ -146,5 +133,79 @@
 
 
 
-<!------------------------------------------MODAL EDIT------------------------------------>
+                <!------------------------------------------MODAL EDIT------------------------------------>
+
+    
+    <div class="modal fade" id="myModal-edit">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                    <div class="modal-body">
+                    <div class="container">
+        <?php
+                $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+                require_once ("./editarbd.php");
+        ?>
+        <form action="./editarbd.php" method="post">
+            <h1>Editar item</h1>
+
+        <input
+        type="hidden"
+        name="id"
+        id="id"
+        value="<?=$resultado['IDEstoque']?>">
+        <!--pega o id-->
+
+
+        <div class="row">
+                <div class="col">
+                    <label for="quantidade">NOME</label>
+                    <input type="text" value="<?=$linha['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="quantidade">quantidade</label>
+                    <input type="number" value="<?=$resultado['quantidadeEstoque']?>" name="quantidade" id="quantidade" placeholder="Digite a quantidade atual disponivel">
+                </div>
+            </div>
+
+            <div class="row" style="opacity: 0;">
+                <div class="col">
+                    <label for="minimo" >quantidade minima</label>
+                    <input type="number" value="<?=$resultado['quantidademinimaEstoque']?>"name="minimo" id="minimo" placeholder="Digite a quantidade  minima de produtos">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input type="submit" value="SALVAR">
+                    <input 
+                        type="submit" 
+                        value="E X C L U I R"
+                        style="background-color: red; border: 1px solid red;">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">FECHAR</button>
+                    </div>
+
+                    </div>
+                </div>
+    </div>
+
+</html>
 
