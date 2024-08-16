@@ -1,10 +1,14 @@
 <?php
-$dns= "mysql:host=localhost;dbname=agendaie;charset=utf8";//Define onde esta o banco
-$user= "root";//para logar no banco
-$pass= "";//para logar no banco
+    $dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
+    $user= "root";
+    $pass= "";
 
-try{
-    $conexao = new PDO($dns,$user,$pass);
-}catch (PDOException $erro) {
-    echo "erro na conexão com o banco";
-}
+    try {
+
+        $conexao = new PDO($dns, $user, $pass);
+        //echo "Conectado com sucesso!";
+
+    } catch (PDOException $erro) {
+        //echo $erro->getMessage();
+        echo "Entre em contato com o desenvolvedor";
+    }

@@ -34,7 +34,7 @@
                     $_SESSION["nome"] = $linha["nomeUsuario"];
 
                     // Redireciona o usuário para a página de visualização
-                    header("location:../menu.php");
+                    header("location:../home.php");
                     exit();
                 }
                 else{
