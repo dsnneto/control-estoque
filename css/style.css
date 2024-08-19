@@ -44,6 +44,9 @@ header{
 }
 
 .sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 20%;
     background-color: white;
     height: 100%;
@@ -73,6 +76,8 @@ header{
     font-weight: 600;
     cursor: pointer;
 }
+
+
 
 .content{
     width: 80%;
