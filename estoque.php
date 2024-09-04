@@ -43,33 +43,46 @@ require_once './layout/sidebar.php';
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Departamento</th>
+                    <th>Armazenamento</th>
+                    <th>Editar</th>
+                    <th>Armazenamento</th>
+
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                  </tr>
-                  </tfoot>
+                  <?php
+                    require_once("./estoquebd.php") ;
+                    if ($totalRegistros > 0) {
+                    foreach ($dados as $linha) {
+
+                    ?>
+                    <tr
+                    <?php
+
+                    if ($linha["quantidadeEstoque"] <= $linha["quantidademinimaEstoque"] ){
+                        echo 'class="qtdMin"';
+                    }
+
+                    ?>>
+                    <!--<td text align="center"><?= $linha["IDEstoque"]; ?></td>-->
+                    <td><?= $linha["nomeEstoque"]; ?></td>
+                    <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
+                    <td text align="center"><?= $linha["armazenamento"]; ?></td>
+                    <td text align="center"><?= $linha["departamento"]; ?></td>
+                    <td text align="center"><a href="./editar.php?id=<?= $linha['IDEstoque']; ?>">
+                    EDITAR
+                    </a></td>
+                    <td text align="center" ><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>
+                    </tr>
+
+                    <?php
+                    }
+                    }
+                    ?>
+                  </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
