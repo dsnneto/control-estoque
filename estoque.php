@@ -48,7 +48,7 @@ require_once './layout/sidebar.php';
                     <th>Departamento</th>
                     <th>Armazenamento</th>
                     <th>Editar</th>
-                    <th>Armazenamento</th>
+                    <th>Excluir</th>
 
                   </tr>
                   </thead>
