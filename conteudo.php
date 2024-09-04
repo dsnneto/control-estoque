@@ -27,7 +27,10 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <?php
+                  require_once "./estoquebd.php";
+                ?>
+                <h3><?php echo $total_produtos; ?></h3>
 
                 <p>Produtos Cadastrados</p>
               </div>
@@ -42,7 +45,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>5</h3>
+                <h3><?php echo $produtos_acabados; ?></h3>
 
                 <p>Produtos para repor</p>
               </div>
@@ -57,7 +60,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>2</h3>
+                <h3><?php echo $produtos_perto_de_acabar; ?></h3>
 
                 <p>Produtos abaixo do estoque</p>
               </div>

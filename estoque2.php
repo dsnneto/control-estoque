@@ -9,11 +9,11 @@
 </head>
 
 <body>
-    
+
         </div>
         <div class="container">
             <table>
-            
+
             <thead>
                 <tr>
                     <!--<th >cod <br> prod</th>-->
@@ -31,23 +31,25 @@
                     foreach ($dados as $linha) {
 
                     ?>
-                    <tr 
-                    <?php 
+                    <tr
+                    <?php
 
                     if ($linha["quantidadeEstoque"] <= $linha["quantidademinimaEstoque"] ){
                         echo 'class="qtdMin"';
                     }
-                    
+
                     ?>>
                     <!--<td text align="center"><?= $linha["IDEstoque"]; ?></td>-->
                     <td><?= $linha["nomeEstoque"]; ?></td>
                     <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
+                    <td text align="center"><?= $linha["armazenamento"]; ?></td>
+                    <td text align="center"><?= $linha["departamento"]; ?></td>
                     <td text align="center"><a href="./editar.php?id=<?= $linha['IDEstoque']; ?>">
                     EDITAR
-                    </a></td> 
-                    <td text align="center" ><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>  
+                    </a></td>
+                    <td text align="center" ><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>
                     </tr>
-                    
+
                     <?php
                     }
                     }
@@ -55,9 +57,9 @@
 
 </tbody>
     <div class="search">
-       
+
         <form action="./search.php" method="GET">
-            
+
             <input type="text" name="search" value="" width="100PX">
             <button type="$_POST">BUSCAR</button>
 
