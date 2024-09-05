@@ -9,7 +9,7 @@ require_once './layout/navbar.php';
 require_once './layout/sidebar.php';
 
 // MAIN CONTENT
-require_once './layout/conteudo.php';
+require_once './conteudo.php';
 
 // SCRIPT
 require_once './layout/script.php';

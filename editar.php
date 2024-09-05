@@ -29,7 +29,7 @@ require_once ("./editar-view.php");
         <div class="row">
                 <div class="col">
                     <label for="quantidade">NOME</label>
-                    <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
+                    <input type="text" value="<?=$linha['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
                 </div>
             </div>
 
