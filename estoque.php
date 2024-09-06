@@ -35,9 +35,17 @@ require_once './layout/sidebar.php';
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+            <div class="card-header">
+              <div class="search-container">
+                <div class="input-group">
+                  <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                  <button type="submit" class="btn btn-lg btn-default">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
               </div>
+                <button type="button" class="btn btn-outline-secondary add-product-button">Adicionar Produto</button>
+            </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">

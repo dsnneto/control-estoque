@@ -36,3 +36,30 @@ body {
 .content-wrapper {
   background-color: #fbfbfb;
 }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.search-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.input-group {
+  flex: 1;
+  weight: 10px;
+}
+.input-group input {
+  flex: 1;
+  margin-right: -1px; /* Remove o espaço entre o input e o botão */
+}
+.input-group button {
+  white-space: nowrap;
+}
+.add-product-button {
+  margin-left: 10px;
+  white-space: nowrap;
+}
