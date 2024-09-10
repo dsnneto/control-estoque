@@ -4,12 +4,24 @@ body {
   font-size: 16px;
 }
 .main-sidebar{
-  background-color: #f56e0f;
+  background-color: #1f1f20;
   /* box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;; */
 }
 
-.sidebar p, i {
-  color: #ffdcc1;
+#nav-bell, #nav-bars {
+  color: #2b4c7e !important;
+}
+
+.nav-link:hover {
+  background-color: #dce0e6; /* Cor de fundo ao passar o mouse na navbar */
+}
+
+.sidebar p {
+  color: #f0f0f0;
+}
+
+.nav-item i {
+  color: #f0f0f0;
 }
 
 .user-panel {
@@ -21,10 +33,10 @@ body {
 }
 
 .nav-link.active{
-  background-color: #f39857 !important;
+  background-color: #2b4c7e !important;
 }
 
-.nav-link:hover {
+.sidebar .nav-link:hover {
   background-color: #555; /* Cor de fundo ao passar o mouse */
   color: #fff; /* Cor do texto ao passar o mouse */
 }
@@ -39,27 +51,45 @@ body {
 
 .card-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 .search-container {
-  flex: 1;
   display: flex;
   align-items: center;
 }
+
 .input-group {
-  flex: 1;
-  weight: 10px;
+  display: flex;
 }
+
+.input-group .form-control {
+  width: 230px;
+  height: 35px;
+}
+
 .input-group input {
-  flex: 1;
   margin-right: -1px; /* Remove o espaço entre o input e o botão */
 }
 .input-group button {
-  white-space: nowrap;
+  height: 35px;
 }
 .add-product-button {
   margin-left: 10px;
-  white-space: nowrap;
+}
+
+.form-control-lg {
+  font-size: 16px;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+  padding: 5px 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.input-group .btn {
+  border-radius: 0px;
 }

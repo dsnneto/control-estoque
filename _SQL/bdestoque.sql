@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/08/2024 às 03:10
+-- Tempo de geração: 10/09/2024 às 01:07
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -32,16 +32,17 @@ CREATE TABLE `estoque` (
   `nomeEstoque` varchar(20) NOT NULL,
   `quantidadeEstoque` int(11) NOT NULL,
   `quantidademinimaEstoque` int(11) NOT NULL,
-  `armazenamento` varchar(15) NOT NULL
+  `armazenamento` varchar(15) NOT NULL,
+  `departamento` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `estoque`
 --
 
-INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`, `armazenamento`) VALUES
-(1, 'Hdmi', 23, 12, 'box4'),
-(2, 'Hdmi', 23, 12, 'box4');
+INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`, `armazenamento`, `departamento`) VALUES
+(1, 'Hdmi', 23, 12, 'box4', ''),
+(2, 'Hdmi', 23, 12, 'box4', '');
 
 -- --------------------------------------------------------
 

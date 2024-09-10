@@ -38,7 +38,7 @@ require_once './layout/sidebar.php';
             <div class="card-header">
               <div class="search-container">
                 <div class="input-group">
-                  <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                  <input type="search" class="form-control form-control-lg" placeholder="Nome do Produto">
                   <button type="submit" class="btn btn-lg btn-default">
                     <i class="fa fa-search"></i>
                   </button>
