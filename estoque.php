@@ -42,16 +42,20 @@ require_once './layout/sidebar.php';
                   <button type="submit" class="btn btn-lg btn-default">
                     <i class="fa fa-search"></i>
                   </button>
+
                 </div>
               </div>
-                <button type="button" class="btn btn-outline-secondary add-product-button">Adicionar Produto</button>
+              <div class="button-group">
+                <button type="button" class="btn btn-outline-danger">Retirar Produto</button>
+                <button type="button" class="btn btn-outline-secondary">Adicionar Produto</button>
+              </div>
             </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Produto</th>
+                    <th>Nome do Produto</th>
                     <th>Quantidade</th>
                     <th>Departamento</th>
                     <th>Armazenamento</th>

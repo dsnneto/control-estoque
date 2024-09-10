@@ -51,14 +51,26 @@ body {
 
 .card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 .search-container {
   display: flex;
   align-items: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+.button-group .btn {
+  font-size: 16px; /* Ajusta o tamanho da fonte dos botões */
+  padding: 5px 15px; /* Ajusta o espaçamento interno dos botões */
+  height: 35px; /* Define a altura dos botões */
+  min-width: 120px; /* Define a largura mínima dos botões */
 }
 
 .input-group {
@@ -77,7 +89,8 @@ body {
   height: 35px;
 }
 .add-product-button {
-  margin-left: 10px;
+  display: flex;
+  justify-self: flex-end;
 }
 
 .form-control-lg {
@@ -92,4 +105,10 @@ body {
 
 .input-group .btn {
   border-radius: 0px;
+}
+
+.card-body::after, .card-footer::after, .card-header::after {
+  display: block;
+  clear: both;
+  content:normal;
 }

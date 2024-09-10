@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: rgb(170, 170, 170);
+    background-color: #dce0e6;
 }
 
 .container{
@@ -21,6 +21,7 @@ body{
     padding: 40px;
     background-color: rgb(255, 255, 255);
     margin: 20px;
+
 }
 
 .row{
@@ -58,15 +59,15 @@ input{
 input[type="submit"]{
     margin-top: 10px;
     padding: 15px 20px;
-    border: 1px #3b3b3b;
+    border: 1px solid;
+    border-radius: 5px;
     cursor: pointer;
-    background-color: #00abdf;
+    background-color: #2b4c7e;
     color: #ffffff;
-    border-radius: 0%;
 }
 
 input[type="submit"]:hover {
-    background-color: #10c7ff;
+    background-color: #567ebb;
 }
 
 input[type="reset"]{
@@ -80,19 +81,14 @@ input[type="password"], input[type="text"]{
     font-size: 14px;
     padding: 8px 20px;
     border: 1px solid #a5a5a5;
-    border-radius: 0%;
+    border-radius: 5px;
+    box-shadow: rgba(105, 105, 105, 0.25) 0px 1px 1px 0px;
 }
 
 input[type="checkbox"]{
     margin: 2px 0px;
     width: 15px;
     height: 15px;
-}
-
-#checkbox-label {
-    margin-bottom: 0px;
-    font-size: 12px;
-    align-self: center;
 }
 
 .row-input {
