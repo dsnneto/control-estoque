@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/08/2024 às 03:10
+-- Tempo de geração: 10/09/2024 às 02:08
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -12,7 +12,24 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Banco de dados: `bdestoque`
+--
+CREATE DATABASE IF NOT EXISTS `bdestoque` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bdestoque`;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `estoque`
+--
+
+DROP TABLE IF EXISTS `estoque`;
 CREATE TABLE `estoque` (
   `IDEstoque` int(11) NOT NULL,
   `nomeEstoque` varchar(20) NOT NULL,
@@ -27,7 +44,7 @@ CREATE TABLE `estoque` (
 
 INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`, `armazenamento`) VALUES
 (1, 'Hdmi', 23, 12, 'box4'),
-(2, 'Hdmi', 23, 12, 'box4');
+(2, 'Oracio', 28, 12, 'box4');
 
 -- --------------------------------------------------------
 
@@ -35,20 +52,24 @@ INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantid
 -- Estrutura para tabela `movimentacao`
 --
 
+DROP TABLE IF EXISTS `movimentacao`;
 CREATE TABLE `movimentacao` (
   `IDM` int(11) NOT NULL,
   `DataM` date NOT NULL,
   `HoraM` time NOT NULL,
   `QtdM` int(11) NOT NULL,
-  `IDEFK` int(11) NOT NULL
+  `IDEFK` int(11) NOT NULL,
+  `NomeEM` varchar(30) NOT NULL,
+  `AlteradoM` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `movimentacao`
 --
 
-INSERT INTO `movimentacao` (`IDM`, `DataM`, `HoraM`, `QtdM`, `IDEFK`) VALUES
-(2, '2024-08-29', '21:50:00', -23, 1);
+INSERT INTO `movimentacao` (`IDM`, `DataM`, `HoraM`, `QtdM`, `IDEFK`, `NomeEM`, `AlteradoM`) VALUES
+(3, '0000-00-00', '00:00:00', 28, 2, 'Hdmi', 5),
+(4, '0000-00-00', '00:00:00', 28, 2, 'Hdmi', 0);
 
 -- --------------------------------------------------------
 
@@ -56,6 +77,7 @@ INSERT INTO `movimentacao` (`IDM`, `DataM`, `HoraM`, `QtdM`, `IDEFK`) VALUES
 -- Estrutura para tabela `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
   `nomeUsuario` varchar(150) NOT NULL,
@@ -71,4 +93,62 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `telefoneUsuario`, `userUsuario`, `senhaUsuario`) VALUES
 (6, 'lucas', '18991527311', 'admin', '$2y$10$djs6zS2UWhtMwk.nfb4GeeB9uu9Jmtg.JUH0tjvcRQpCzDo07.R1G');
 
--
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `estoque`
+--
+ALTER TABLE `estoque`
+  ADD PRIMARY KEY (`IDEstoque`);
+
+--
+-- Índices de tabela `movimentacao`
+--
+ALTER TABLE `movimentacao`
+  ADD PRIMARY KEY (`IDM`),
+  ADD KEY `IDEFK` (`IDEFK`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `estoque`
+--
+ALTER TABLE `estoque`
+  MODIFY `IDEstoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `movimentacao`
+--
+ALTER TABLE `movimentacao`
+  MODIFY `IDM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `movimentacao`
+--
+ALTER TABLE `movimentacao`
+  ADD CONSTRAINT `movimentacao_ibfk_1` FOREIGN KEY (`IDEFK`) REFERENCES `estoque` (`IDEstoque`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
