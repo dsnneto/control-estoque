@@ -1,5 +1,5 @@
 <?php
-    $dns = "mysql:host=localhost;dbname=agendaie;charset=utf8";
+    $dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
     $user= "root";
     $pass= "";
 
@@ -13,5 +13,5 @@
 
     } catch (PDOException $erro) {
         //echo $erro->getMessage();
-        echo "Entre em contato com o desenvolvedor";
+        echo "<h1 style='color: red;'>ERRO NA CONEXÂO INICIAL</h1>";
     }
