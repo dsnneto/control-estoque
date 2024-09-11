@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col">
                     <button type="submit">SALVAR</button>
-                    <button ><a href="estoque.php">VIZUALIZAR</a></button>
+                    <button ><a href="estoque.php">VISUALIZAR</a></button>
                 </div>
             </div>
 

@@ -66,6 +66,12 @@ body {
   gap: 10px; /* Espaçamento entre os botões */
 }
 
+.button-group a{
+  outline: none;
+  text-decoration: none;
+  color: #6c757d;
+}
+
 .button-group .btn {
   font-size: 16px; /* Ajusta o tamanho da fonte dos botões */
   padding: 5px 15px; /* Ajusta o espaçamento interno dos botões */

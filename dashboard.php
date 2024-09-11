@@ -45,7 +45,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?php echo $produtos_acabados; ?></h3>
+                <h3><?php echo $produtos_perto_de_acabar;?></h3>
 
                 <p>Itens para repor</p>
               </div>
@@ -60,7 +60,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?php echo $produtos_perto_de_acabar; ?></h3>
+                <h3><?php echo $produtos_acabados; ?></h3>
 
                 <p>Itens abaixo do estoque</p>
               </div>
