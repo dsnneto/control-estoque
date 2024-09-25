@@ -50,15 +50,15 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                        require_once("./estoquebd.php"); // Aqui você deve garantir que $dados e $totalRegistros estejam configurados corretamente
+                                        require_once("./estoquebd.php");
                                         if ($totalRegistros > 0) {
                                             foreach ($dados as $linha) {
                                     ?>
                                     <tr <?php if ($linha["quantidadeEstoque"] <= $linha["quantidademinimaEstoque"]) { echo 'class="qtdMin"'; } ?>>
                                         <td><?= htmlspecialchars($linha["nomeEstoque"]); ?></td>
-                                        <td text align="center"><?= htmlspecialchars($linha["quantidadeEstoque"]); ?></td>
-                                        <td text align="center"><?= htmlspecialchars($linha["armazenamento"]); ?></td>
-                                        <td text align="center">
+                                        <td align="center"><?= htmlspecialchars($linha["quantidadeEstoque"]); ?></td>
+                                        <td align="center"><?= htmlspecialchars($linha["armazenamento"]); ?></td>
+                                        <td align="center">
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"
                                                 data-id="<?= htmlspecialchars($linha['IDEstoque']); ?>"
                                                 data-nome="<?= htmlspecialchars($linha['nomeEstoque']); ?>"
@@ -143,8 +143,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var myModal = document.getElementById('myModal');
-            myModal.addEventListener('show.bs.modal', function (event) {
+            var myModalElement = document.getElementById('myModal');
+            var myModal = new bootstrap.Modal(myModalElement);
+
+            myModalElement.addEventListener('show.bs.modal', function (event) {
                 var button = event.relatedTarget;
                 var id = button.getAttribute('data-id');
                 var nome = button.getAttribute('data-nome');
@@ -152,19 +154,35 @@
                 var armazenamento = button.getAttribute('data-armazenamento');
                 var minimo = button.getAttribute('data-minimo');
 
-                var modal = this;
-                modal.querySelector('#id').value = id;
-                modal.querySelector('#nItem').value = nome;
-                modal.querySelector('#quantidade').value = quantidade;
-                modal.querySelector('#armazenamento').value = armazenamento;
-                modal.querySelector('#minimo').value = minimo;
+                this.querySelector('#id').value = id;
+                this.querySelector('#nItem').value = nome;
+                this.querySelector('#quantidade').value = quantidade;
+                this.querySelector('#armazenamento').value = armazenamento;
+                this.querySelector('#minimo').value = minimo;
             });
 
             document.getElementById('deleteBtn').addEventListener('click', function (e) {
                 e.preventDefault();
                 if (confirm('Tem certeza de que deseja excluir este produto?')) {
                     var id = document.getElementById('id').value;
-                    window.location.href = './excluir.php?id=' + id;
+
+                    fetch('./excluir.php?id=' + id, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            myModal.hide(); // Fechar o modal
+                            location.reload(); // Opcional: recarregar a página
+                        } else {
+                            alert('Erro ao excluir o produto. Tente novamente.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro:', error);
+                    });
                 }
             });
         });

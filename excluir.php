@@ -14,14 +14,14 @@
         
         <?php
             $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-            require_once("./excluir-view.php");
+            require_once("./layout/script.php");
         ?>
         
         <form action="./excluirbd.php" method="POST">
 
             <div class="row">
                 <div class="col">
-                    <label for="nome">DESEJA REALMENTE EXCLUIR O ITEM: <b><?=$resultado["nomeEstoque"]?></b> ?</label>
+                    <label for="nome">DESEJA REALMENTE EXCLUIR O ITEM: <b><?=$linha["nomeEstoque"]?></b> ?</label>
                     <input
                     type="hidden" 
                         name="id" 
