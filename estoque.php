@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="../css/modal.css">
     <?php require_once './layout/head.php'; ?>
 </head>
 <body>
@@ -35,9 +36,60 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Produtos com estoque mínimo: prod1, prod2, prod3</h3>
+                            <div class="button-group">
+                                <button type="button" class="btn btn-outline-danger">Retirar Produto</button>
+                                <button type="button" class="btn btn-outline-secondary">Adicionar Produto</button>
                             </div>
-                            <!-- /.card-header -->
+                            <!-- Estrutura do Modal -->
+                                <div id="myModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <form action="./cadastrobd.php" method="post">
+                                        <h1>ADICIONAR ITEM</h1>
+                                            <div class="row">
+                                            <div class="col">
+                                                <label for="nome">
+                                                    <span>NOME ITEM</span>
+                                                    <input type="text" name="nome" id="nome" placeholder="Nome do novo produto" required>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="quantidade">
+                                                        <span>QTD ATUAL</span>
+                                                        <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade atual" required>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="minimo">
+                                                        <span>QTD MIN</span>
+                                                        <input type="text" name="minimo" id="minimo" placeholder="Quantidade mínima" required>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="arm">
+                                                        <span>LOCAL</span>
+                                                        <input type="text" name="arm" id="arm" placeholder="Box - armário - estante" required>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button type="submit">SALVAR</button>
+                                                    <button type="button" class="close-modal">CANCELAR</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
@@ -101,7 +153,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form id="editForm" action="./editarbd.php" method="post">
+                    <form id="editForm" action="./excluirbd.php" method="post">
                         <input type="hidden" id="id" name="id">
 
                         <div class="mb-3">
@@ -131,7 +183,7 @@
                     </form>
                 </div>
 
-                <!-- Modal Footer -->
+                <!-- Modal -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
@@ -186,6 +238,34 @@
                 }
             });
         });
+
+
+                    // modal
+                 modal
+            var modal = document.getElementById("myModal");
+
+            var btn = document.querySelector(".btn-outline-secondary");
+
+            var span = document.getElementsByClassName("close")[0];
+
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            document.querySelector(".close-modal").onclick = function() {
+                modal.style.display = "none";
+            }
+        
     </script>
 </body>
 </html>
