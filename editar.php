@@ -13,9 +13,9 @@
         <?php
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-require_once ("./editar-view.php");
+require_once ("./excluir-view.php");
 ?>
-        <form action="./editarbd.php" method="post">
+        <form action="./editarbd.php" method="POST">
             <h1>Editar item</h1>
 
         <input
@@ -29,7 +29,7 @@ require_once ("./editar-view.php");
         <div class="row">
                 <div class="col">
                     <label for="quantidade">NOME</label>
-                    <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
+                    <input type="text" value="<?=$linha['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
                 </div>
             </div>
 

@@ -6,7 +6,7 @@ $minimo = filter_input(INPUT_POST, "minimo", FILTER_SANITIZE_NUMBER_INT);
 
 try {
     require_once("./conexao/conexao.php");
-
+    
     $conexao->beginTransaction();
 
     $sql = "SELECT quantidadeEstoque, nomeEstoque FROM estoque

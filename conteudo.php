@@ -32,10 +32,10 @@
                 ?>
                 <h3><?php echo $total_produtos; ?></h3>
 
-                <p>Total de Itens</p>
+                <p>Produtos Cadastrados</p>
               </div>
               <div class="icon">
-                <i class="ion ion-clipboard"></i>
+                <i class="ion ion-bag"></i>
               </div>
               <a href="#" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -47,10 +47,10 @@
               <div class="inner">
                 <h3><?php echo $produtos_acabados; ?></h3>
 
-                <p>Itens para repor</p>
+                <p>Produtos para repor</p>
               </div>
               <div class="icon">
-                <i class="ion ion-android-alert"></i>
+                <i class="ion ion-person-add"></i>
               </div>
               <a href="#" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -62,10 +62,10 @@
               <div class="inner">
                 <h3><?php echo $produtos_perto_de_acabar; ?></h3>
 
-                <p>Itens abaixo do estoque</p>
+                <p>Produtos abaixo do estoque</p>
               </div>
               <div class="icon">
-                <i class="ion ion-alert-circled"></i>
+                <i class="ion ion-pie-graph"></i>
               </div>
               <a href="#" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
             </div>
