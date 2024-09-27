@@ -72,30 +72,67 @@
           </div>
           <!-- ./col -->
         </div>
-        <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Últimas Entradas de Produtos</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-    </section>
+        <div class="dashboard-tables">
+          <div class="table-entradas">
+            <!-- TABELA 1 -->
+            <h2 id="table-dashboard-title">Últimas entradas de Itens</h2>
+            <table class="table table-bordered" id="table-dashboard">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantidade</th>
+                  <th scope="col">Data de entrada</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+            <!-- TABELA 2 -->
+          <div class="table-saidas">
+            <!-- TABELA 1 -->
+            <h2 id="table-dashboard-title">Últimas retiradas de Itens</h2>
+            <table class="table table-bordered" id="table-dashboard">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantidade</th>
+                  <th scope="col">Data de saídas</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+</div>
+</section>
