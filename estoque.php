@@ -1,5 +1,6 @@
 <?php
 // HTML HEAD
+$title = 'SCE | Estoque';
 require_once './layout/head.php';
 
 // NAV HEADER

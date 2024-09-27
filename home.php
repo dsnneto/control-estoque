@@ -1,5 +1,6 @@
 <?php
 // HTML HEAD
+$title = 'SCE | Dashboard';
 require_once './layout/head.php';
 
 // NAV HEADER
