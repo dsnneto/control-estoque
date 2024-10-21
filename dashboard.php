@@ -45,7 +45,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?php echo $produtos_acabados; ?></h3>
+                <h3><?php echo $produtos_perto_de_acabar;?></h3>
 
                 <p>Itens para repor</p>
               </div>
@@ -60,7 +60,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?php echo $produtos_perto_de_acabar; ?></h3>
+                <h3><?php echo $produtos_acabados; ?></h3>
 
                 <p>Itens abaixo do estoque</p>
               </div>
@@ -72,4 +72,67 @@
           </div>
           <!-- ./col -->
         </div>
-    </section>
+        <div class="dashboard-tables">
+          <div class="table-entradas">
+            <!-- TABELA 1 -->
+            <h2 id="table-dashboard-title">Últimas entradas de Itens</h2>
+            <table class="table table-bordered" id="table-dashboard">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantidade</th>
+                  <th scope="col">Data de entrada</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+            <!-- TABELA 2 -->
+          <div class="table-saidas">
+            <!-- TABELA 1 -->
+            <h2 id="table-dashboard-title">Últimas retiradas de Itens</h2>
+            <table class="table table-bordered" id="table-dashboard">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantidade</th>
+                  <th scope="col">Data de saídas</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+</div>
+</section>

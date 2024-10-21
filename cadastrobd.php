@@ -42,6 +42,3 @@ try {
 } catch (PDOException $erro) {
         echo ("Erro Cadastrobd.");
 }
-
-
-
