@@ -34,7 +34,7 @@ try {
     ));
 
     if ($comandoSQL->rowCount() > 0) {
-        header("location:./cadastro.php");
+        header("location:./estoque.php");
         exit();
     } else {
         echo "falha ao inserir (la ele)";
