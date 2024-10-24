@@ -86,8 +86,8 @@ require_once './layout/sidebar.php';
                         <!--<td text align="center"><?= $linha["IDEstoque"]; ?></td>-->
                         <td><?= $linha["nomeEstoque"]; ?></td>
                         <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
-                        <td text align="center"><?= $linha["armazenamento"]; ?></td>
                         <td text align="center"><?= $linha["departamento"]; ?></td>
+                        <td text align="center"><?= $linha["local"]; ?></td>
                         <td text align="center"><a href="#" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome="<?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>">Editar</a></td>
 
                         <td text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>
@@ -126,56 +126,68 @@ require_once './layout/sidebar.php';
             </div>
             <div class="modal-body">
                 <form action="./cadastrobd.php" method="post">
-            <h1>ADICIONAR ITEM</h1>
-            <div class="row">
-                <div class="col">
-                    <label for="nome">
-                    <span>NOME ITEM</span>
-                    <input type="text" name="nome" id="nome" placeholder="Nome do novo produto">
-                    </label>
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="nome">
+                                <span>NOME ITEM</span>
+                                <input type="text" name="nome" id="nome" placeholder="Nome do novo produto">
+                            </label>
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col">
-                    <label for="quantidade">
-                    <span>QTD ATUAL</span>
-                    <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade atual">
-                    </label>
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="quantidade">
+                                <span>QTD ATUAL</span>
+                                <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade atual">
+                            </label>
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col">
-                    <label for="minimo">
-                    <span>QTD MIN</span>
-                    <input type="text" name="minimo" id="minimo" placeholder="Quantidade minima">
-                    </label>
-                </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="minimo">
+                                <span>QTD MIN</span>
+                                <input type="text" name="minimo" id="minimo" placeholder="Quantidade mínima">
+                            </label>
+                        </div>
+                    </div>
 
-            </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="local">
+                                <span>LOCAL</span>
+                                <input type="text" name="arm" id="arm" placeholder="Box - armário - estante" readonly>
+                            </label>
+                            <div class="input-group mt-3 mb-3">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    ESCOLHA O LOCAL
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="setLocal('Local 1')">Local 1</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="setLocal('Local 2')">Local 2</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="setLocal('Local 3')">Local 3</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col">
-                    <label for="minimo">
-                    <span>LOCAL</span>
-                    <input type="text" name="arm" id="arm" placeholder="Box - armário - estante">
-                    </label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <button type="submit">SALVAR</button>
-                    <button ><a href="estoque.php">VISUALIZAR</a></button>
-                </div>
-            </div>
-
-        </form>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-success">SALVAR</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function setLocal(local) {
+        document.getElementById('arm').value = local;
+    }
+</script>
 
 <!-- Modal para Editar Produto -->
 <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">

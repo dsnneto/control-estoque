@@ -1,5 +1,5 @@
 <?php
-    $dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
+    $dns = "mysql:host=localhost;dbname=bdestoque1;charset=utf8";
     $user= "root";
     $pass= "";
 
