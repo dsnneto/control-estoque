@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Banco de dados: `bdestoque`
 --
 
-CREATE DATABASE bdestoque;
+-- CREATE DATABASE bdestoque;
 
 -- --------------------------------------------------------
 

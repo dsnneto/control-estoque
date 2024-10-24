@@ -150,6 +150,18 @@ body {
 .conteudo-departamentos {
   display: flex;
   gap: 10px;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.departamentos-add {
+  width: 30%;
+}
+
+.departamentos-lista {
+  width: 60%;
+}
+
+.form-departamentos input {
+  width: 100%;
 }
 

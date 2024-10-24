@@ -35,64 +35,65 @@ require_once './layout/sidebar.php';
       <div class="container-fluid">
         <!-- ADD DEPARTMENTS -->
         <div class="conteudo-departamentos">
-          
-          <div class="card card-primary" style="max-width: 30%;">
-            <div class="card-header">
-              <h3 class="card-title">Quick Example</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form>
-              <div class="card-body" id="add-departamento-input">
-                <div class="form-departamentos">
-                  <input type="text" placeholder="Ex.: Financeiro, Almoxarifado...">
-                </div>
-              </div>
-              <!-- /.card-body -->
-              
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Adicionar</button>
-              </div>
-            </form>
-          </div>
-          <!-- /.card -->
-          
-          <div class="col-12">
-            <div class="card" style="max-width: 40%;">
+          <div class="departamentos-add">
+            <div class="card card-primary">
               <div class="card-header">
-                <div class="search-container">
-                  <div class="input-group">
-                    <input type="search" class="form-control form-control-lg" placeholder="Nome do Produto">
-                    <button type="submit" class="btn btn-lg btn-default">
-                      <i class="fa fa-search"></i>
-                    </button>
-                    
-                  </div>
-                </div>
-                <div class="button-group">
-                  <button type="button" class="btn btn-outline-danger">Retirar Produto</button>
-                  <button type="button" class="btn btn-outline-secondary">Adicionar Produto</button>
-                </div>
+                <h3 class="card-title">Adicionar Departamento</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Departamentos</th>
-                      <th>Ações</th>
-                      
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!--<td text align="center"><?= $linha["IDEstoque"]; ?></td>-->
-                    <td text align="center"></td>
-                    <td text align="center"><a href="./editar.php?id=<?= $linha['IDEstoque']; ?>">
-                      EDITAR
-                    </a></td>
-                    <td text align="center" ><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>
-                  </tr>
+
+              <!-- form start -->
+              <form>
+                <div class="card-body" id="add-departamento-input">
+                  <div class="form-departamentos">
+                    <input type="text" placeholder="Ex.: Financeiro, Almoxarifado...">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Adicionar</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./ departamentos add -->
+
+          <!-- departamentos lista -->
+          <div class="departamentos-lista">
+            <div class="col-12">
+              <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Adicionar Departamento</h3>
+              </div>
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    
+                      <tr>
+                        <th text align="center">#</th>
+                        <th>Departamentos</th>
+                        <th text align="center">Ações</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td text align="center">1</td>
+                        <td text align="center">Financeiro</td>
+                        <td text align="center">E | X</td>
+                      </tr>
+                      <tr>
+                        <td text align="center">2</td>
+                        <td text align="center">Almoxarifado</td>
+                        <td text align="center">E | X</td>
+                      </tr>
+                      <tr>
+                        <td text align="center">3</td>
+                        <td text align="center">Administrativo</td>
+                        <td text align="center">E | X</td>
+                      </tr>
                   </tbody>
                 </table>
               </div>
@@ -101,6 +102,8 @@ require_once './layout/sidebar.php';
             <!-- /.card -->
           </div>
           <!-- /.col -->
+        </div>
+        <!-- ./ departamentos lista -->
         </div>
         <!-- /. departamentos conteudo -->
         </div>
