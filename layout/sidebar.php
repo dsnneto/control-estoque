@@ -42,7 +42,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link" onclick="setActive(this)">
+            <a href="./departamentos.php" class="nav-link" onclick="setActive(this)">
               <i class="nav-icon fas fa-solid fa-folder"></i>
               <p>
                 Departamentos
