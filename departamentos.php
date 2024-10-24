@@ -52,7 +52,9 @@ require_once './layout/sidebar.php';
                 <!-- /.card-body -->
                 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Adicionar</button>
+                  <div class="button-container">
+                    <button type="submit" class="btn btn-outline-success">Adicionar</button>
+                  </div>
                 </div>
               </form>
             </div>

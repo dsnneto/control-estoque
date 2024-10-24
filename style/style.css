@@ -88,6 +88,10 @@ body {
   height: 35px;
 }
 
+.input-group .btn {
+  border-radius: 2px;
+}
+
 .input-group input {
   margin-right: -1px; /* Remove o espaço entre o input e o botão */
 }
@@ -147,6 +151,7 @@ body {
   align-items: center;
 }
 
+/* TELA DEPARTAMENTOS */
 .conteudo-departamentos {
   display: flex;
   gap: 10px;
@@ -164,4 +169,15 @@ body {
 .form-departamentos input {
   width: 100%;
 }
+
+.card-primary:not(.card-outline)>.card-header {
+  background-color: #3684db;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* FIM TELA DEPARTAMENTOS */
 
