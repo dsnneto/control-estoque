@@ -48,7 +48,6 @@
                 echo("Usuário não cadastrado.");
             }
         } catch (PDOException $erro) {
-            // Exibe uma mensagem de erro genérica em caso de falha na execução da consulta SQL
             echo ("Entre em contato com o suporte!");
         }
     }
@@ -56,4 +55,3 @@
         // Exibe uma mensagem de erro se a requisição HTTP não for do tipo POST
         echo ("Entre em contato com o suporte!");
     }
-?>

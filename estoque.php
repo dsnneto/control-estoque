@@ -87,7 +87,7 @@ require_once './layout/sidebar.php';
                         <td><?= $linha["nomeEstoque"]; ?></td>
                         <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
                         <td text align="center"><?= $linha["departamento"]; ?></td>
-                        <td text align="center"><?= $linha["local"]; ?></td>
+                        <td text align="center"><?= $linha["armazenamento"]; ?></td>
                         <td text align="center"><a href="#" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome="<?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>">Editar</a></td>
 
                         <td text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>
@@ -113,6 +113,46 @@ require_once './layout/sidebar.php';
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<!-- Modal para Adicionar Produto -->
+<?php
+    $dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
+    $user= "root";
+    $pass= "";
+
+    try {
+
+        $conexao = new PDO($dns, $user, $pass);
+        //echo "Conectado com sucesso!";
+
+        // Definir o modo de erro para exceções
+        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    } catch (PDOException $erro) {
+        //echo $erro->getMessage();
+        echo "Entre em contato com o desenvolvedor";
+    }
+?>
+
+<!-- Modal para Adicionar Produto -->
+<?php
+// Conectar ao banco de dados
+$dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
+$user= "root";
+$pass= "";
+
+try {
+    $conexao = new PDO($dns, $user, $pass);
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $erro) {
+    echo "Erro na conexão: " . $erro->getMessage();
+    exit; // Para evitar continuar com o restante do código
+}
+
+// Consultar locais
+$sql = "SELECT idLocal, nLocal FROM local_arm";
+$result = $conexao->query($sql);
+?>
 
 <!-- Modal para Adicionar Produto -->
 <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
@@ -155,19 +195,21 @@ require_once './layout/sidebar.php';
 
                     <div class="row">
                         <div class="col">
-                            <label for="local">
-                                <span>LOCAL</span>
-                                <input type="text" name="arm" id="arm" placeholder="Box - armário - estante" readonly>
-                            </label>
                             <div class="input-group mt-3 mb-3">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    ESCOLHA O LOCAL
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="setLocal('Local 1')">Local 1</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="setLocal('Local 2')">Local 2</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="setLocal('Local 3')">Local 3</a></li>
-                                </ul>
+                                <select name="local" id="local" class="form-select">
+                                    <option value="">ESCOLHA O LOCAL</option>
+                                    <?php
+                                    // Verifica se a consulta foi bem-sucedida
+                                    if ($result) {
+                                        // Saída de dados de cada linha
+                                        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                            echo "<option value='" . $row["idLocal"] . "'>" . trim($row["nLocal"]) . "</option>";
+                                        }
+                                    } else {
+                                        echo "<option value=''>Erro ao carregar locais</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -182,6 +224,13 @@ require_once './layout/sidebar.php';
         </div>
     </div>
 </div>
+
+<?php
+// Fechar a conexão
+$conexao = null;
+?>
+
+
 
 <script>
     function setLocal(local) {
