@@ -1,13 +1,10 @@
 <?php
-// HTML HEAD
+
 $title = 'SCE | Estoque';
 require_once './layout/head.php';
-
-// NAV HEADER
 require_once './layout/navbar.php';
-
-// SIDEBAR AND SIDEBAR MENU
 require_once './layout/sidebar.php';
+require_once './layout/script.php';
 
 ?>
 
@@ -135,24 +132,7 @@ require_once './layout/sidebar.php';
 ?>
 
 <!-- Modal para Adicionar Produto -->
-<?php
-// Conectar ao banco de dados
-$dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
-$user= "root";
-$pass= "";
 
-try {
-    $conexao = new PDO($dns, $user, $pass);
-    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $erro) {
-    echo "Erro na conexão: " . $erro->getMessage();
-    exit; // Para evitar continuar com o restante do código
-}
-
-// Consultar locais
-$sql = "SELECT idLocal, nLocal FROM local_arm";
-$result = $conexao->query($sql);
-?>
 
 <!-- Modal para Adicionar Produto -->
 <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
@@ -165,61 +145,40 @@ $result = $conexao->query($sql);
                 </button>
             </div>
             <div class="modal-body">
-                <form action="./cadastrobd.php" method="post">
-                    <div class="row">
-                        <div class="col">
-                            <label for="nome">
-                                <span>NOME ITEM</span>
-                                <input type="text" name="nome" id="nome" placeholder="Nome do novo produto">
-                            </label>
-                        </div>
-                    </div>
+            <form action="./estoquebd.php" method="post">
+    <label for="nome">
+       
+        <input type="text" name="nomeEstoque" id="nome" placeholder="Nome do produto">
+    </label>
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="quantidade">
-                                <span>QTD ATUAL</span>
-                                <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade atual">
-                            </label>
-                        </div>
-                    </div>
+    <label for="quantidade">
+      
+        <input type="number" name="quantidadeEstoque" id="quantidade" placeholder="Quantidade atual">
+    </label>
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="minimo">
-                                <span>QTD MIN</span>
-                                <input type="text" name="minimo" id="minimo" placeholder="Quantidade mínima">
-                            </label>
-                        </div>
-                    </div>
+    <label for="minimo">
+       
+        <input type="number" name="quantidadeMinimaEstoque" id="minimo" placeholder="Quantidade mínima">
+    </label>
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mt-3 mb-3">
-                                <select name="local" id="local" class="form-select">
-                                    <option value="">ESCOLHA O LOCAL</option>
-                                    <?php
-                                    // Verifica se a consulta foi bem-sucedida
-                                    if ($result) {
-                                        // Saída de dados de cada linha
-                                        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                            echo "<option value='" . $row["idLocal"] . "'>" . trim($row["nLocal"]) . "</option>";
-                                        }
-                                    } else {
-                                        echo "<option value=''>Erro ao carregar locais</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+    <label for="local">
+        
+        <select name="local" id="local">
+            <option value="">Selecione o Local</option>
+            <?php
+            // Carregar locais do banco de dados
+            $sql = "SELECT idLocal, nLocal FROM local_arm";
+            $result = $conexao->query($sql);
+            while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                echo "<option value='" . $row['idLocal'] . "'>" . $row['nLocal'] . "</option>";
+            }
+            ?>
+        </select>
+    </label>
 
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-success">SALVAR</button>
-                        </div>
-                    </div>
-                </form>
+    <button type="submit">Salvar</button>
+</form>
+
             </div>
         </div>
     </div>
@@ -249,8 +208,7 @@ $conexao = null;
                 </button>
             </div>
             <div class="modal-body">
-            <form action="./editarbd.php" method="post">
-            <h1>Editar item</h1>
+            <form action="./editarbd.php" method="POST">
 
         <input
         type="hidden"
@@ -305,27 +263,3 @@ $conexao = null;
     </div>
 </div>
 
-<?php require_once './layout/script.php'; ?>
-
-<script>
-
-$('#modalAdicionar').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var id = button.data('id');
-            var nome = button.data('nome');
-            var modal = $(this);
-            modal.find('#produtoAdicionar').val(nome);
-            modal.find('#idProdutoAdicionar').val(id);
-        });
-
-$('#modalEditar').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var id = button.data('id');
-            var nome = button.data('nome');
-            var quantidade = button.data('quantidade');
-            var modal = $(this);
-            modal.find('#produtoEditar').val(nome);
-            modal.find('#quantidadeEditar').val(quantidade);
-            modal.find('#idProdutoEditar').val(id);
-        });
-</script>

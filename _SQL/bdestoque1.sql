@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/09/2024 às 01:07
+-- Tempo de geração: 25/10/2024 às 02:04
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -18,13 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `bdestoque`
+-- Banco de dados: `bdestoque1`
 --
-
-
-CREATE DATABASE bdestoque;
-
-
 
 -- --------------------------------------------------------
 
@@ -37,7 +32,7 @@ CREATE TABLE `estoque` (
   `nomeEstoque` varchar(20) NOT NULL,
   `quantidadeEstoque` int(11) NOT NULL,
   `quantidademinimaEstoque` int(11) NOT NULL,
-  `armazenamento` varchar(15) NOT NULL,
+  `armazenamento` int(15) NOT NULL,
   `departamento` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -46,8 +41,27 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`, `armazenamento`, `departamento`) VALUES
-(1, 'Hdmi', 23, 12, 'box4', ''),
-(2, 'Hdmi', 23, 12, 'box4', '');
+(3, 'SSD 240 GB ', 4, 2, 2, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `local_arm`
+--
+
+CREATE TABLE `local_arm` (
+  `idLocal` int(11) NOT NULL,
+  `nLocal` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `local_arm`
+--
+
+INSERT INTO `local_arm` (`idLocal`, `nLocal`) VALUES
+(1, 'BOX 1'),
+(2, 'BOX 2'),
+(3, 'BOX 3');
 
 -- --------------------------------------------------------
 
@@ -62,13 +76,6 @@ CREATE TABLE `movimentacao` (
   `QtdM` int(11) NOT NULL,
   `IDEFK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `movimentacao`
---
-
-INSERT INTO `movimentacao` (`IDM`, `DataM`, `HoraM`, `QtdM`, `IDEFK`) VALUES
-(2, '2024-08-29', '21:50:00', -23, 1);
 
 -- --------------------------------------------------------
 
@@ -99,7 +106,14 @@ INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `telefoneUsuario`, `userUsua
 -- Índices de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  ADD PRIMARY KEY (`IDEstoque`);
+  ADD PRIMARY KEY (`IDEstoque`),
+  ADD KEY `armazenamento` (`armazenamento`);
+
+--
+-- Índices de tabela `local_arm`
+--
+ALTER TABLE `local_arm`
+  ADD PRIMARY KEY (`idLocal`);
 
 --
 -- Índices de tabela `movimentacao`
@@ -122,7 +136,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `IDEstoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDEstoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `local_arm`
+--
+ALTER TABLE `local_arm`
+  MODIFY `idLocal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `movimentacao`
@@ -139,6 +159,12 @@ ALTER TABLE `usuarios`
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `estoque`
+--
+ALTER TABLE `estoque`
+  ADD CONSTRAINT `estoque_ibfk_1` FOREIGN KEY (`armazenamento`) REFERENCES `local_arm` (`idLocal`);
 
 --
 -- Restrições para tabelas `movimentacao`

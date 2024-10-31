@@ -1,5 +1,5 @@
 <?php
-    $dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
+    $dns = "mysql:host=localhost;dbname=bdestoque1;charset=utf8";
     $user= "root";
     $pass= "";
 
@@ -12,6 +12,6 @@
         $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     } catch (PDOException $erro) {
-        //echo $erro->getMessage();
+        
         echo "Entre em contato com o desenvolvedor";
     }
