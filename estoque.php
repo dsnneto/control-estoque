@@ -46,7 +46,7 @@ require_once './layout/script.php';
                 </form>
               </div>
               <div class="button-group">
-                <button type="button" class="btn btn-outline-danger">Retirar Produto</button>
+                <!-- <button type="button" class="btn btn-outline-danger">Retirar Produto</button> -->
                 <!-- <button type="button" class="btn btn-outline-secondary">Adicionar Produto</button> -->
                 <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#modalAdicionar" >Adicionar Produto</button>
                 
@@ -61,8 +61,7 @@ require_once './layout/script.php';
                     <th>Quantidade</th>
                     <th>Departamento</th>
                     <th>Armazenamento</th>
-                    <th>Editar</th>
-                    <th>Excluir</th>
+                    <!-- <th><img src=''/></th> colocoar imagem  -->
 
                   </tr>
                 </thead>
@@ -85,9 +84,8 @@ require_once './layout/script.php';
                         <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
                         <td text align="center"><?= $linha["departamento"]; ?></td>
                         <td text align="center"><?= $linha["armazenamento"]; ?></td>
-                        <td text align="center"><a href="#" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome="<?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>">Editar</a></td>
-
-                        <td text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</td>
+                        <td text align="center"><a href="#" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome="<?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>">Editar</a><a text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</a></td>
+                       
                       </tr>
 
                   <?php
@@ -120,9 +118,6 @@ require_once './layout/script.php';
     try {
 
         $conexao = new PDO($dns, $user, $pass);
-        //echo "Conectado com sucesso!";
-
-        // Definir o modo de erro para exceções
         $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     } catch (PDOException $erro) {
@@ -131,54 +126,46 @@ require_once './layout/script.php';
     }
 ?>
 
-<!-- Modal para Adicionar Produto -->
-
-
-<!-- Modal para Adicionar Produto -->
+  <!-- Modal para add Produto -->
 <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header">    
                 <h5 class="modal-title" id="modalAdicionarLabel">Adicionar Produto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form action="./estoquebd.php" method="post">
-    <label for="nome">
-       
-        <input type="text" name="nomeEstoque" id="nome" placeholder="Nome do produto">
-    </label>
+                <form action="./estoquebd.php" method="post">
+                    <label for="nome">
+                        <input type="text" name="nome" id="nome" placeholder="Nome do produto" required>
+                    </label>
 
-    <label for="quantidade">
-      
-        <input type="number" name="quantidadeEstoque" id="quantidade" placeholder="Quantidade atual">
-    </label>
+                    <label for="quantidade">
+                        <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade atual" required>
+                    </label>
 
-    <label for="minimo">
-       
-        <input type="number" name="quantidadeMinimaEstoque" id="minimo" placeholder="Quantidade mínima">
-    </label>
+                    <label for="minimo">
+                        <input type="number" name="minimo" id="minimo" placeholder="Quantidade mínima" required>
+                    </label>
 
-    <label for="local">
-        
-        <select name="local" id="local">
-            <option value="">Selecione o Local</option>
-            <?php
-            // Carregar locais do banco de dados
-            $sql = "SELECT idLocal, nLocal FROM local_arm";
-            $result = $conexao->query($sql);
-            while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<option value='" . $row['idLocal'] . "'>" . $row['nLocal'] . "</option>";
-            }
-            ?>
-        </select>
-    </label>
+                    <label for="local">
+                        <select name="local" id="local" required>
+                            <option value="">Selecione o Local</option>
+                            <?php
+                            // Carregar locais do banco de dados
+                            $sql = "SELECT idLocal, nLocal FROM local_arm";
+                            $result = $conexao->query($sql);
+                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<option value='" . $row['idLocal'] . "'>" . $row['nLocal'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </label>
 
-    <button type="submit">Salvar</button>
-</form>
-
+                    <button type="submit">Salvar</button>
+                </form>
             </div>
         </div>
     </div>
