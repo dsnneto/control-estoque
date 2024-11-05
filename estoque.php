@@ -9,7 +9,7 @@ require_once './layout/script.php';
 ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" >
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -48,7 +48,7 @@ require_once './layout/script.php';
               <div class="button-group">
                 <!-- <button type="button" class="btn btn-outline-danger">Retirar Produto</button> -->
                 <!-- <button type="button" class="btn btn-outline-secondary">Adicionar Produto</button> -->
-                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#modalAdicionar" >Adicionar Produto</button>
+                <button type="button" class="btn" data-toggle="modal" data-target="#modalAdicionar" ><img src="./style/icon/mais-pequeno.png">ADD ITEM</button>
                 
               </div>
             </div>
@@ -61,7 +61,7 @@ require_once './layout/script.php';
                     <th>Quantidade</th>
                     <th>Departamento</th>
                     <th>Armazenamento</th>
-                    <!-- <th><img src=''/></th> colocoar imagem  -->
+                 
 
                   </tr>
                 </thead>
@@ -84,7 +84,7 @@ require_once './layout/script.php';
                         <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
                         <td text align="center"><?= $linha["departamento"]; ?></td>
                         <td text align="center"><?= $linha["armazenamento"]; ?></td>
-                        <td text align="center"><a href="#" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome="<?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>">Editar</a><a text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>">X</a></td>
+                        <td text align="center"><a href="#" class="btn" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome=" <?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>"><img src="./style/icon/lapis.png"></a><a text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>"><img src="./style/icon/cruz.png"></a></td>
                        
                       </tr>
 
