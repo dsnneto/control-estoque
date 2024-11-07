@@ -42,6 +42,15 @@
           </li>
 
           <li class="nav-item">
+            <a href="./retiradaP.php" class="nav-link" onclick="setActive(this)">
+              <i class="nav-icon fas fa-solid fa-chart-line"></i>
+              <p>
+                Rel. de retirada
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="./departamentos.php" class="nav-link" onclick="setActive(this)">
               <i class="nav-icon fas fa-solid fa-folder"></i>
               <p>
@@ -50,14 +59,6 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link" onclick="setActive(this)">
-              <i class="nav-icon fas fa-solid fa-chart-line"></i>
-              <p>
-                Relatórios
-              </p>
-            </a>
-          </li>
           <li class="nav-item">
             <a href="#" class="nav-link" onclick="setActive(this)">
               <i class="nav-icon fas fa-regular fa-comments"></i>

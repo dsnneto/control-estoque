@@ -25,7 +25,6 @@ try {
         :quantidade,
         :minimo,
         :armazenamento,
-       
     )
     ");
 

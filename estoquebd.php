@@ -30,9 +30,6 @@ try {
         :departamento
     )");
 
-    
-    $departamento = "Default"; //colocar quando for corrigir o cam dep
-
     $comandoSQL->execute(array(
         ":nome" => $nome,
         ":quantidade" => $quantidade,
