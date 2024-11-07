@@ -55,7 +55,7 @@
 
             <div class="row">
                 <div class="col">
-                    <input type="reset" value="VOLTAR">
+                    <input type="submit" value="CADASTRAR">
                     
                     
                 </div>

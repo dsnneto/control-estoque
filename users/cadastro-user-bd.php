@@ -9,7 +9,7 @@
     $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try {
-        require_once("./conexao/conexao.php");
+        require_once("../conexao/conexao.php");
 
         $comandoSQL = $conexao->prepare("
             INSERT INTO usuarios (
@@ -34,7 +34,7 @@
 
         if($comandoSQL->rowCount() > 0){
             echo("Usuário cadastrado");
-            header("location:./cadastro.php");
+            header("location:../index.php");
             exit();
 
         }
