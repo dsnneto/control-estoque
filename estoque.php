@@ -111,19 +111,7 @@ require_once './layout/script.php';
 
 <!-- Modal para Adicionar Produto -->
 <?php
-    $dns = "mysql:host=localhost;dbname=bdestoque;charset=utf8";
-    $user= "root";
-    $pass= "";
-
-    try {
-
-        $conexao = new PDO($dns, $user, $pass);
-        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    } catch (PDOException $erro) {
-        //echo $erro->getMessage();
-        echo "Entre em contato com o desenvolvedor";
-    }
+    require_once("./conexao/conexao.php");
 ?>
 
   <!-- Modal para add Produto -->
@@ -142,6 +130,10 @@ require_once './layout/script.php';
                         <input type="text" name="nome" id="nome" placeholder="Nome do produto" required>
                     </label>
 
+                    <label for="departamento">
+                        <input type="text" name="departamento" id="departamento" placeholder="Departamento" required>
+                    </label>
+
                     <label for="quantidade">
                         <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade atual" required>
                     </label>
@@ -155,10 +147,10 @@ require_once './layout/script.php';
                             <option value="">Selecione o Local</option>
                             <?php
                             // Carregar locais do banco de dados
-                            $sql = "SELECT idLocal, nLocal FROM local_arm";
+                            $sql = "SELECT IDLocal, nomeLocal FROM local_arm";
                             $result = $conexao->query($sql);
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<option value='" . $row['idLocal'] . "'>" . $row['nLocal'] . "</option>";
+                                echo "<option value='" . $row['IDLocal'] . "'>" . $row['nomeLocal'] . "</option>";
                             }
                             ?>
                         </select>
@@ -208,7 +200,7 @@ $conexao = null;
         <div class="row">
                 <div class="col">
                     <label for="quantidade">NOME</label>
-                    <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nItem" id="nItem" placeholder="Digite o nome do item">
+                    <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nome" id="nome" placeholder="Digite o nome do item">
                 </div>
             </div>
 
