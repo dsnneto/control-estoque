@@ -29,7 +29,7 @@ try {
     ");
 
     
-    $departamento = "Default"; // usar assim que for necessário e tiver pronto
+    $departamento = "Default"; // usar quando necessário (se der tempo
 
     $comandoSQL->execute(array(
         ":nome" => $nome,

@@ -33,5 +33,5 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- modal-->
-<script src="../script/modal.js"></script>
+<script src="../script/scripts.js"></script>
 
