@@ -1,20 +1,23 @@
 <?php
 
-//cadastro dos produtos com seus respectivos campo
+// Cadastro dos produtos com seus respectivos campos
 require_once ("./conexao/conexao.php");
+
+
+// Verifique se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+}
 
 $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $quantidade = filter_input(INPUT_POST, "quantidade", FILTER_SANITIZE_NUMBER_INT);
 $minimo = filter_input(INPUT_POST, "minimo", FILTER_SANITIZE_NUMBER_INT);
 $armazenamento = filter_input(INPUT_POST, "local", FILTER_SANITIZE_NUMBER_INT); // Captura o local
+$departamento = filter_input(INPUT_POST, "departamento", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // Captura o departamento
 
 try {
-
-    // Verifica se os dados estão corretos
-    if (empty($nome) || empty($quantidade) || empty($minimo) || empty($armazenamento)) {
-        throw new Exception("");
-    }
-
     $comandoSQL = $conexao->prepare("
     INSERT INTO estoque (
         nomeEstoque,
@@ -35,7 +38,7 @@ try {
         ":quantidade" => $quantidade,
         ":minimo" => $minimo,
         ":armazenamento" => $armazenamento,
-        ":departamento" => $departamento
+        ":departamento" => $departamento // Corrige o parâmetro
     ));
 
     if ($comandoSQL->rowCount() > 0) {
@@ -45,9 +48,7 @@ try {
         echo "Falha ao inserir no banco de dados.";
     }
 } catch (PDOException $erro) {
-    echo "Erro na consulta: " . $erro->getMessage();
-} catch (Exception $e) {
-    // echo "Erro: " . $e->getMessage();
+    // echo "Erro na consulta: " . $erro->getMessage();
 }
 try {
     
