@@ -99,3 +99,36 @@ try {
 }
 
 
+
+try {
+    // Consulta para trazer os dados do estoque com os nomes correspondentes
+    $sql = "
+    SELECT 
+        e.IDEstoque,
+        e.nomeEstoque,
+        e.quantidadeEstoque,
+        e.quantidademinimaEstoque,
+        e.armazenamento,  -- ID do armazenamento
+        la.nomeLocal AS nomeArmazenamento,  -- Nome do armazenamento
+        e.departamento,  -- ID do departamento
+        d.nomeDep AS nomeDepartamento  -- Nome do departamento
+    FROM 
+        estoque e
+    LEFT JOIN local_arm la ON e.armazenamento = la.IDLocal
+    LEFT JOIN departamentos d ON e.departamento = d.IDDepartamento
+";
+
+
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute();
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $totalRegistros = $stmt->rowCount();
+} catch (PDOException $e) {
+    echo "Erro ao carregar os dados: " . $e->getMessage();
+    exit;
+}
+?>
+
+
+

@@ -61,3 +61,29 @@ $(document).ready(function() {
 });
 
 
+
+  
+$(document).on('click', '[data-target="#modalRetirar"]', function () {
+    const idEstoque = $(this).data('id');
+    const nome = $(this).data('nome');
+    const quantidade = $(this).data('quantidade');
+    const armazenamentoNome = $(this).data('armazenamento');
+    const departamentoNome = $(this).data('departamento');
+    const armazenamentoID = $(this).data('armazenamento-id');
+    const departamentoID = $(this).data('departamento-id');
+
+    // Atualize os campos do modal com os dados
+    $('#modalRetirar #idEstoque').val(idEstoque);
+    $('#modalRetirar #nomeProduto').val(nome);
+    $('#modalRetirar #quantidadeEstoque').val(quantidade);
+    $('#modalRetirar #armazenamentoNome').val(armazenamentoNome);
+    $('#modalRetirar #departamentoNome').val(departamentoNome);
+    $('#modalRetirar #armazenamentoID').val(armazenamentoID);
+    $('#modalRetirar #departamentoID').val(departamentoID);
+});
+
+  
+
+  
+
+

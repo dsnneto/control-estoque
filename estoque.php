@@ -9,7 +9,7 @@ require_once './layout/script.php';
 ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" >
+<div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -42,14 +42,14 @@ require_once './layout/script.php';
                     <button type="submit" class="btn btn-lg btn-default">
                       <i class="fa fa-search"></i>
                     </button>
-                </div>
+                  </div>
                 </form>
               </div>
               <div class="button-group">
                 <!-- <button type="button" class="btn btn-outline-danger">Retirar Produto</button> -->
                 <!-- <button type="button" class="btn btn-outline-secondary">Adicionar Produto</button> -->
-                <button type="button" class="btn" data-toggle="modal" data-target="#modalAdicionar" ><img src="./style/icon/mais-pequeno.png">ADD ITEM</button>
-                
+                <button type="button" class="btn" data-toggle="modal" data-target="#modalAdicionar"><img src="./style/icon/mais-pequeno.png">ADD ITEM</button>
+
               </div>
             </div>
             <!-- /.card-header -->
@@ -61,7 +61,7 @@ require_once './layout/script.php';
                     <th>Quantidade</th>
                     <th>Departamento</th>
                     <th>Armazenamento</th>
-                 
+
 
                   </tr>
                 </thead>
@@ -79,13 +79,39 @@ require_once './layout/script.php';
                           }
 
                           ?>>
-                        <!--<td text align="center"><?= $linha["IDEstoque"]; ?></td>-->
+
                         <td><?= $linha["nomeEstoque"]; ?></td>
                         <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
-                        <td text align="center"><?= $linha["departamento"]; ?></td>
-                        <td text align="center"><?= $linha["armazenamento"]; ?></td>
+                        <td text align="center"><?= $linha["nomeDepartamento"]; ?></td>
+                        <td text align="center"><?= $linha["nomeArmazenamento"]; ?></td>
                         <td text align="center"><a href="#" class="btn" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome=" <?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>"><img src="./style/icon/lapis.png"></a><a text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>"><img src="./style/icon/cruz.png"></a></td>
-                       
+                        <td>
+                          <a text aling="center" href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalRetirar"
+                            data-id="<?= $linha['IDEstoque'] ?>"
+                            data-nome="<?= $linha['nomeEstoque'] ?>"
+                            data-quantidade="<?= $linha['quantidadeEstoque'] ?>"
+                            data-armazenamento-id="<?= $linha['armazenamento'] ?>"
+                            data-departamento-id="<?= $linha['departamento'] ?>"
+                            data-armazenamento="<?= $linha['nomeArmazenamento'] ?>"
+                            data-departamento="<?= $linha['nomeDepartamento'] ?>"
+                            id="btnRetirar">
+                            -
+                          </a>
+
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalRepor"
+                            data-id="<?= $linha['IDEstoque'] ?>"
+                            data-nome="<?= $linha['nomeEstoque'] ?>"
+                            data-quantidade="<?= $linha['quantidadeEstoque'] ?>"
+                            data-armazenamento-id="<?= $linha['armazenamento'] ?>"
+                            data-departamento-id="<?= $linha['departamento'] ?>"
+                            data-armazenamento="<?= $linha['nomeArmazenamento'] ?>"
+                            data-departamento="<?= $linha['nomeDepartamento'] ?>"
+                            id="btnRepor">
+                            +
+                          </a>
+                        </td>
+
+
                       </tr>
 
                   <?php
@@ -111,134 +137,176 @@ require_once './layout/script.php';
 
 <!-- Modal para Adicionar Produto -->
 <?php
-    require_once("./conexao/conexao.php");
+require_once("./conexao/conexao.php");
 ?>
 
-  <!-- Modal para add Produto -->
+<!-- Modal para add Produto -->
 <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">    
-                <h5 class="modal-title" id="modalAdicionarLabel">Adicionar Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="./estoquebd.php" method="post">
-                    <label for="nome">
-                        <input type="text" name="nome" id="nome" placeholder="Nome do produto" required>
-                    </label>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAdicionarLabel">Adicionar Produto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="./estoquebd.php" method="post">
+          <label for="nome">
+            <input type="text" name="nome" id="nome" placeholder="Nome do produto" required>
+          </label>
 
-                    <label for="departamento">
-                        <input type="text" name="departamento" id="departamento" placeholder="Departamento" required>
-                    </label>
+          <label for="quantidade">
+            <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade atual" required>
+          </label>
 
-                    <label for="quantidade">
-                        <input type="number" name="quantidade" id="quantidade" placeholder="Quantidade atual" required>
-                    </label>
+          <label for="minimo">
+            <input type="number" name="minimo" id="minimo" placeholder="Quantidade mínima" required>
+          </label>
 
-                    <label for="minimo">
-                        <input type="number" name="minimo" id="minimo" placeholder="Quantidade mínima" required>
-                    </label>
+          <label for="local">
+            <select name="local" id="local" required>
+              <option value="">Selecione o Local</option>
+              <?php
+              try {
+                // Carregar locais do banco de dados
+                $sql = "SELECT IDLocal, nomeLocal FROM local_arm";
+                $result = $conexao->query($sql);
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                  echo "<option value='" . $row['IDLocal'] . "'>" . $row['nomeLocal'] . "</option>";
+                }
+              } catch (\Throwable $th) {
+                echo "<option>Nenhum local disponivel</option>";
+              }
 
-                    <label for="local">
-                        <select name="local" id="local" required>
-                            <option value="">Selecione o Local</option>
-                            <?php
-                            // Carregar locais do banco de dados
-                            $sql = "SELECT IDLocal, nomeLocal FROM local_arm";
-                            $result = $conexao->query($sql);
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<option value='" . $row['IDLocal'] . "'>" . $row['nomeLocal'] . "</option>";
-                            }
-                            ?>
-                        </select>
-                    </label>
+              ?>
+            </select>
+          </label>
 
-                    <button type="submit">Salvar</button>
-                </form>
-            </div>
-        </div>
+          <label for="departamento">
+            <select name="departamento" id="departamento" required>
+              <option value="">Selecione o Departamento</option>
+              <?php
+              try {
+                // Carregar departamentos do banco de dados
+                $sql = "SELECT IDDepartamento, nomeDep FROM departamentos";
+                $result = $conexao->query($sql);
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                  echo "<option value='" . $row['IDDepartamento'] . "'>" . $row['nomeDep'] . "</option>";
+                }
+              } catch (\Throwable $th) {
+                echo "<option>Nenhum departamento disponivel</option>";
+              }
+              ?>
+            </select>
+          </label>
+
+          <button type="submit">Salvar</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
-<?php
-// Fechar a conexão
-$conexao = null;
-?>
 
 
+<!-- Modal para Editar Produto excluido -->
 
-<script>
-    function setLocal(local) {
-        document.getElementById('arm').value = local;
-    }
-</script>
+<!-- Modal para Retirada -->
+<div class="modal fade" id="modalRetirar" tabindex="-1" role="dialog" aria-labelledby="modalRetirarLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRetirarLabel">Retirar Produto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formRetirada" method="POST" action="retirarbd.php">
+          <div class="form-group">
+            <label for="nomeProduto">Nome do Produto</label>
+            <input type="text" class="form-control" id="nomeProduto" readonly>
+          </div>
+          <div class="form-group">
+            <label for="quantidadeEstoque">Quantidade no Estoque</label>
+            <input type="number" class="form-control" id="quantidadeEstoque" readonly>
+          </div>
+          <div class="form-group">
+            <label for="quantidadeRetirada">Quantidade a Retirar</label>
+            <input type="number" class="form-control" id="quantidadeRetirada" name="quantidadeRetirada" required>
+          </div>
+          <div class="form-group">
+            <label for="armazenamento">Armazenamento</label>
+            <input type="text" class="form-control" id="armazenamentoNome" readonly>
+            <input type="hidden" id="armazenamentoID" name="armazenamentoID">
+          </div>
+          <div class="form-group">
+            <label for="departamento">Departamento</label>
+            <input type="text" class="form-control" id="departamentoNome" readonly>
+            <input type="hidden" id="departamentoID" name="departamentoID">
+          </div>
 
-<!-- Modal para Editar Produto -->
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalEditarLabel">Editar Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-            <form action="./editarbd.php" method="POST">
+          <div class="form-group">
+            <label for="responsavelRetirada">Responsável pela Retirada</label>
+            <input type="text" class="form-control" id="responsavelRetirada" name="responsavelRetirada" placeholder="Informe o responsável" required>
+          </div>
 
-        <input
-        type="hidden"
-        name="id"
-        id="id"
-        value="<?=$resultado['IDEstoque']?>">
-        <!--pega o id-->
-
-
-        <div class="row">
-                <div class="col">
-                    <label for="quantidade">NOME</label>
-                    <input type="text" value="<?=$resultado['nomeEstoque']?>" name="nome" id="nome" placeholder="Digite o nome do item">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <label for="quantidade">quantidade</label>
-                    <input type="number" value="<?=$resultado['quantidadeEstoque']?>" name="quantidade" id="quantidade" placeholder="Digite a quantidade atual disponivel">
-                </div>
-            </div>
-
-            <div class="row" style="opacity: 0;">
-                <div class="col">
-                    <label for="minimo" >quantidade minima</label>
-                    <input type="number" value="<?=$resultado['quantidademinimaEstoque']?>"name="minimo" id="minimo" placeholder="Digite a quantidade  minima de produtos">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <button class="bnt-voltaredit">VOLTAR</button>
-                    <input type="submit" value="SALVAR">
-                    <input 
-                        type="submit" 
-                        value="E X C L U I R"
-                        style="background-color: red; border: 1px solid red;">
-                </div>
-            </div>
-
+          <input type="text" id="idEstoque" name="idEstoque">
+          <button type="submit" class="btn btn-primary">Confirmar Retirada</button>
         </form>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 
+<!--Modal de repor-->
+<!-- Modal para Retirada -->
+<div class="modal fade" id="modalRetirar" tabindex="-1" role="dialog" aria-labelledby="modalRetirarLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRetirarLabel">Retirar Produto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formRetirada" method="POST" action="retirarbd.php">
+          <div class="form-group">
+            <label for="nomeProduto">Nome do Produto</label>
+            <input type="text" class="form-control" id="nomeProduto" readonly>
+          </div>
+          <div class="form-group">
+            <label for="quantidadeEstoque">Quantidade no Estoque</label>
+            <input type="number" class="form-control" id="quantidadeEstoque" readonly>
+          </div>
+          <div class="form-group">
+            <label for="quantidadeRetirada">Quantidade a Retirar</label>
+            <input type="number" class="form-control" id="quantidadeRetirada" name="quantidadeRetirada" required>
+          </div>
+          <div class="form-group">
+            <label for="armazenamento">Armazenamento</label>
+            <input type="text" class="form-control" id="armazenamentoNome" readonly>
+            <input type="hidden" id="armazenamentoID" name="armazenamentoID">
+          </div>
+          <div class="form-group">
+            <label for="departamento">Departamento</label>
+            <input type="text" class="form-control" id="departamentoNome" readonly>
+            <input type="hidden" id="departamentoID" name="departamentoID">
+          </div>
+
+          <div class="form-group">
+            <label for="responsavelRetirada">Responsável pela Retirada</label>
+            <input type="text" class="form-control" id="responsavelRetirada" name="responsavelRetirada" placeholder="Informe o responsável" required>
+          </div>
+
+          <input type="text" id="idEstoque" name="idEstoque">
+          <button type="submit" class="btn btn-primary">Confirmar Retirada</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
