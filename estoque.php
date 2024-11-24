@@ -224,35 +224,48 @@ require_once("./conexao/conexao.php");
       </div>
       <div class="modal-body">
         <form id="formRetirada" method="POST" action="retirarbd.php">
-          <div class="form-group">
-            <label for="nomeProduto">Nome do Produto</label>
-            <input type="text" class="form-control" id="nomeProduto" readonly>
-          </div>
-          <div class="form-group">
-            <label for="quantidadeEstoque">Quantidade no Estoque</label>
-            <input type="number" class="form-control" id="quantidadeEstoque" readonly>
-          </div>
-          <div class="form-group">
-            <label for="quantidadeRetirada">Quantidade a Retirar</label>
-            <input type="number" class="form-control" id="quantidadeRetirada" name="quantidadeRetirada" required>
-          </div>
-          <div class="form-group">
-            <label for="armazenamento">Armazenamento</label>
-            <input type="text" class="form-control" id="armazenamentoNome" readonly>
-            <input type="hidden" id="armazenamentoID" name="armazenamentoID">
-          </div>
-          <div class="form-group">
-            <label for="departamento">Departamento</label>
-            <input type="text" class="form-control" id="departamentoNome" readonly>
-            <input type="hidden" id="departamentoID" name="departamentoID">
-          </div>
+          <div class="row g-2">
 
-          <div class="form-group">
-            <label for="responsavelRetirada">Responsável pela Retirada</label>
-            <input type="text" class="form-control" id="responsavelRetirada" name="responsavelRetirada" placeholder="Informe o responsável" required>
-          </div>
+            <div class="col-6">
+              <label for="quantidadeRetirada">Quantidade a Retirar</label>
+              <input type="number" class="form-control" id="quantidadeRetirada" name="quantidadeRetirada" required>
+            </div>
 
-          <input type="text" id="idEstoque" name="idEstoque">
+            <div class="col-6">
+              <label for="responsavelRetirada">Responsável pela Retirada</label>
+              <input type="text" class="form-control" id="responsavelRetirada" name="responsavelRetirada" placeholder="Informe o responsável" required>
+            </div>
+
+          </div>
+          <hr color="grey">
+          <div class="row g-2">
+
+            <div class="col-6">
+              <label for="nomeProduto">Nome do Produto</label>
+              <input type="text" class="form-control" id="nomeProduto" readonly>
+            </div>
+
+            <div class="col-6">
+              <label for="quantidadeEstoque">Quantidade no Estoque</label>
+              <input type="number" class="form-control" id="quantidadeEstoque" readonly>
+            </div>
+
+            <div class="col-6">
+              <label for="armazenamento">Armazenamento</label>
+              <input type="text" class="form-control" id="armazenamentoNome" readonly>
+              <input type="hidden" id="armazenamentoID" name="armazenamentoID">
+            </div>
+
+            <div class="col-6">
+              <label for="departamento">Departamento</label>
+              <input type="text" class="form-control" id="departamentoNome" readonly>
+              <input type="hidden" id="departamentoID" name="departamentoID">
+            </div>
+          </div>
+          <br>
+          <br>
+
+          <input type="hidden" id="idEstoque" name="idEstoque">
           <button type="submit" class="btn btn-primary">Confirmar Retirada</button>
         </form>
 
@@ -262,8 +275,7 @@ require_once("./conexao/conexao.php");
 </div>
 
 <!--Modal de repor-->
-<!-- Modal para Retirada -->
-<div class="modal fade" id="modalRetirar" tabindex="-1" role="dialog" aria-labelledby="modalRetirarLabel" aria-hidden="true">
+<div class="modal fade" id="modalRepor" tabindex="-1" role="dialog" aria-labelledby="modalReporLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -273,37 +285,49 @@ require_once("./conexao/conexao.php");
         </button>
       </div>
       <div class="modal-body">
-        <form id="formRetirada" method="POST" action="retirarbd.php">
-          <div class="form-group">
-            <label for="nomeProduto">Nome do Produto</label>
-            <input type="text" class="form-control" id="nomeProduto" readonly>
-          </div>
-          <div class="form-group">
-            <label for="quantidadeEstoque">Quantidade no Estoque</label>
-            <input type="number" class="form-control" id="quantidadeEstoque" readonly>
-          </div>
-          <div class="form-group">
-            <label for="quantidadeRetirada">Quantidade a Retirar</label>
-            <input type="number" class="form-control" id="quantidadeRetirada" name="quantidadeRetirada" required>
-          </div>
-          <div class="form-group">
-            <label for="armazenamento">Armazenamento</label>
-            <input type="text" class="form-control" id="armazenamentoNome" readonly>
-            <input type="hidden" id="armazenamentoID" name="armazenamentoID">
-          </div>
-          <div class="form-group">
-            <label for="departamento">Departamento</label>
-            <input type="text" class="form-control" id="departamentoNome" readonly>
-            <input type="hidden" id="departamentoID" name="departamentoID">
-          </div>
+        <form id="formRetirada" method="POST" action="reporbd.php">
+          <div class="row g-2">
 
-          <div class="form-group">
-            <label for="responsavelRetirada">Responsável pela Retirada</label>
-            <input type="text" class="form-control" id="responsavelRetirada" name="responsavelRetirada" placeholder="Informe o responsável" required>
-          </div>
+            <div class="col-6">
+              <div>
+                <label for="quantidadeRetirada">Quantidade a Repor</label>
+                <input type="number" class="form-control" id="quantidadeRepor" name="quantidadeRepor" required>
+              </div>
+              
 
-          <input type="text" id="idEstoque" name="idEstoque">
-          <button type="submit" class="btn btn-primary">Confirmar Retirada</button>
+            </div>
+<br>
+<hr color="grey">
+<br>
+            <div class="row g-2">
+
+              <div class="col-6">
+                <label for="nomeProduto">Nome do Produto</label>
+                <input type="text" class="form-control" id="nomeProd" readonly>
+              </div>
+
+              <div class="col-6">
+                <label for="quantidadeEstoque">Quantidade no Estoque</label>
+                <input type="number" class="form-control" id="qtdEstoque" readonly>
+              </div>
+
+              <div class="col-6">
+                <label for="armazenamento">Armazenamento</label>
+                <input type="text" class="form-control" id="nomeArmazenamento" readonly>
+                <input type="hidden" id="armazenamento-ID" name="armazenamento-ID">
+              </div>
+
+              <div class="col-6">
+                <label for="departamento">Departamento</label>
+                <input type="text" class="form-control" id="nomeDepartamento" readonly>
+                <input type="hidden" id="departamento-ID" name="departamento-ID">
+              </div>
+            </div>
+            <br>
+            <br>
+
+            <input type="hidden" id="idProduto" name="idProduto">
+            <button type="submit" class="btn btn-success">Confirmar Reposição</button>
         </form>
 
       </div>

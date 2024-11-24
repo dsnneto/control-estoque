@@ -82,6 +82,24 @@ $(document).on('click', '[data-target="#modalRetirar"]', function () {
     $('#modalRetirar #departamentoID').val(departamentoID);
 });
 
+$(document).on('click', '[data-target="#modalRepor"]', function () {
+    const idEstoque = $(this).data('id');
+    const nome = $(this).data('nome');
+    const quantidade = $(this).data('quantidade');
+    const armazenamentoNome = $(this).data('armazenamento');
+    const departamentoNome = $(this).data('departamento');
+    const armazenamentoID = $(this).data('armazenamento-id');
+    const departamentoID = $(this).data('departamento-id');
+
+    // Atualize os campos do modal com os dados
+    $('#modalRepor #idProduto').val(idEstoque);
+    $('#modalRepor #nomeProd').val(nome);
+    $('#modalRepor #qtdEstoque').val(quantidade);
+    $('#modalRepor #nomeArmazenamento').val(armazenamentoNome);
+    $('#modalRepor #nomeDepartamento').val(departamentoNome);
+    $('#modalRepor #armazenamento-ID').val(armazenamentoID);
+    $('#modalRepor #departamento-ID').val(departamentoID);
+});
   
 
   
