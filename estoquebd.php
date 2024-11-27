@@ -101,33 +101,61 @@ try {
 
 
 try {
-    // Consulta para trazer os dados do estoque com os nomes correspondentes
-    $sql = "
-    SELECT 
-        e.IDEstoque,
-        e.nomeEstoque,
-        e.quantidadeEstoque,
-        e.quantidademinimaEstoque,
-        e.armazenamento,  -- ID do armazenamento
-        la.nomeLocal AS nomeArmazenamento,  -- Nome do armazenamento
-        e.departamento,  -- ID do departamento
-        d.nomeDep AS nomeDepartamento  -- Nome do departamento
-    FROM 
-        estoque e
-    LEFT JOIN local_arm la ON e.armazenamento = la.IDLocal
-    LEFT JOIN departamentos d ON e.departamento = d.IDDepartamento
-";
+    $dados = [];
+    $totalRegistros = 0;
 
+    if (isset($_GET['busca']) && !empty($_GET['busca'])) {
+        $busca = "%" . $_GET['busca'] . "%"; // Adiciona % para busca parcial
 
+        // Ajuste no SQL para fazer a busca em nomeEstoque, departamento e nomeLocal
+        $comandoSQL = "
+            SELECT 
+                e.IDEstoque,
+                e.nomeEstoque,
+                e.quantidadeEstoque,
+                e.quantidademinimaEstoque,
+                e.armazenamento,
+                la.nomeLocal AS nomeArmazenamento,
+                e.departamento,
+                d.nomeDep AS nomeDepartamento
+            FROM 
+                estoque e
+            LEFT JOIN local_arm la ON e.armazenamento = la.IDLocal
+            LEFT JOIN departamentos d ON e.departamento = d.IDDepartamento
+            WHERE e.nomeEstoque LIKE :busca 
+            OR d.nomeDep LIKE :busca
+            OR la.nomeLocal LIKE :busca
+        ";
 
-    $stmt = $conexao->prepare($sql);
-    $stmt->execute();
+        $stmt = $conexao->prepare($comandoSQL);
+        $stmt->execute(['busca' => $busca]);
+    } else {
+        // Se não houver busca, traz todos os registros
+        $comandoSQL = "
+            SELECT 
+                e.IDEstoque,
+                e.nomeEstoque,
+                e.quantidadeEstoque,
+                e.quantidademinimaEstoque,
+                e.armazenamento,
+                la.nomeLocal AS nomeArmazenamento,
+                e.departamento,
+                d.nomeDep AS nomeDepartamento
+            FROM 
+                estoque e
+            LEFT JOIN local_arm la ON e.armazenamento = la.IDLocal
+            LEFT JOIN departamentos d ON e.departamento = d.IDDepartamento
+        ";
+
+        $stmt = $conexao->query($comandoSQL);
+    }
+
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $totalRegistros = $stmt->rowCount();
-} catch (PDOException $e) {
-    echo "Erro ao carregar os dados: " . $e->getMessage();
-    exit;
+} catch (PDOException $erro) {
+    echo "Erro ao realizar a busca: " . $erro->getMessage();
 }
+
 ?>
 
 
