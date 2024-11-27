@@ -42,6 +42,10 @@ require_once './layout/script.php';
                     <button type="submit" class="btn btn-lg btn-default">
                       <i class="fa fa-search"></i>
                     </button>
+                    <a href="estoque.php" class="btn btn-lg btn-default"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
+                        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
+                      </svg></a>
                   </div>
                 </form>
               </div>
@@ -54,79 +58,81 @@ require_once './layout/script.php';
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>Nome do Produto</th>
-                    <th>Quantidade</th>
-                    <th>Departamento</th>
-                    <th>Armazenamento</th>
+              <div class="table-wrapper">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Nome do Produto</th>
+                      <th>Quantidade</th>
+                      <th>Departamento</th>
+                      <th>Armazenamento</th>
+                      <th>Ações</th>
 
 
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  require_once("./estoquebd.php");
-                  if ($totalRegistros > 0) {
-                    foreach ($dados as $linha) {
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    require_once("./estoquebd.php");
+                    if ($totalRegistros > 0) {
+                      foreach ($dados as $linha) {
 
-                  ?>
-                      <tr <?php
+                    ?>
+                        <tr <?php
 
-                          if ($linha["quantidadeEstoque"] <= $linha["quantidademinimaEstoque"]) {
-                            echo 'class="qtdMin"';
-                          }
+                            if ($linha["quantidadeEstoque"] <= $linha["quantidademinimaEstoque"]) {
+                              echo 'class="qtdMin"';
+                            }
 
-                          ?>>
+                            ?>>
 
-                        <td><?= $linha["nomeEstoque"]; ?></td>
-                        <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
-                        <td text align="center"><?= $linha["nomeDepartamento"]; ?></td>
-                        <td text align="center"><?= $linha["nomeArmazenamento"]; ?></td>
-                        <td text align="center"><a href="#" class="btn" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome=" <?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>"><img src="./style/icon/lapis.png"></a>
-                        <a text align="center">
-                        <a href="#" class="btn" data-toggle="modal" data-target="#modalConfirmarExcluir" 
-                          data-id="<?= $linha['IDEstoque']; ?>"
-                          data-nome="<?= $linha['nomeEstoque']; ?>"
-                          data-quantidade="<?= $linha['quantidadeEstoque']; ?>">
-                          <img src="./style/icon/cruz.png">
-                          </a></td>
-                        <td>
-                          <a text aling="center" href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalRetirar"
-                            data-id="<?= $linha['IDEstoque'] ?>"
-                            data-nome="<?= $linha['nomeEstoque'] ?>"
-                            data-quantidade="<?= $linha['quantidadeEstoque'] ?>"
-                            data-armazenamento-id="<?= $linha['armazenamento'] ?>"
-                            data-departamento-id="<?= $linha['departamento'] ?>"
-                            data-armazenamento="<?= $linha['nomeArmazenamento'] ?>"
-                            data-departamento="<?= $linha['nomeDepartamento'] ?>"
-                            id="btnRetirar">
-                            -
-                          </a>
+                          <td><?= $linha["nomeEstoque"]; ?></td>
+                          <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
+                          <td text align="center"><?= $linha["nomeDepartamento"]; ?></td>
+                          <td text align="center"><?= $linha["nomeArmazenamento"]; ?></td>
+                          <td>
+                            <a href="#" class="btn" data-toggle="modal" data-target="#modalConfirmarExcluir"
+                              data-id="<?= $linha['IDEstoque']; ?>"
+                              data-nome="<?= $linha['nomeEstoque']; ?>"
+                              data-quantidade="<?= $linha['quantidadeEstoque']; ?>">
+                              <img src="./style/icon/cruz.png">
+                            </a>
 
-                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalRepor"
-                            data-id="<?= $linha['IDEstoque'] ?>"
-                            data-nome="<?= $linha['nomeEstoque'] ?>"
-                            data-quantidade="<?= $linha['quantidadeEstoque'] ?>"
-                            data-armazenamento-id="<?= $linha['armazenamento'] ?>"
-                            data-departamento-id="<?= $linha['departamento'] ?>"
-                            data-armazenamento="<?= $linha['nomeArmazenamento'] ?>"
-                            data-departamento="<?= $linha['nomeDepartamento'] ?>"
-                            id="btnRepor">
-                            +
-                          </a>
-                        </td>
+                            <a text aling="center" href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalRetirar"
+                              data-id="<?= $linha['IDEstoque'] ?>"
+                              data-nome="<?= $linha['nomeEstoque'] ?>"
+                              data-quantidade="<?= $linha['quantidadeEstoque'] ?>"
+                              data-armazenamento-id="<?= $linha['armazenamento'] ?>"
+                              data-departamento-id="<?= $linha['departamento'] ?>"
+                              data-armazenamento="<?= $linha['nomeArmazenamento'] ?>"
+                              data-departamento="<?= $linha['nomeDepartamento'] ?>"
+                              id="btnRetirar">
+                              -
+                            </a>
+
+                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalRepor"
+                              data-id="<?= $linha['IDEstoque'] ?>"
+                              data-nome="<?= $linha['nomeEstoque'] ?>"
+                              data-quantidade="<?= $linha['quantidadeEstoque'] ?>"
+                              data-armazenamento-id="<?= $linha['armazenamento'] ?>"
+                              data-departamento-id="<?= $linha['departamento'] ?>"
+                              data-armazenamento="<?= $linha['nomeArmazenamento'] ?>"
+                              data-departamento="<?= $linha['nomeDepartamento'] ?>"
+                              id="btnRepor">
+                              +
+                            </a>
+                          </td>
 
 
-                      </tr>
+                        </tr>
 
-                  <?php
+                    <?php
+                      }
                     }
-                  }
-                  ?>
-                </tbody>
-              </table>
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>
@@ -317,12 +323,12 @@ require_once("./conexao/conexao.php");
                 <label for="quantidadeRetirada">Quantidade a Repor</label>
                 <input type="number" class="form-control" id="quantidadeRepor" name="quantidadeRepor" required>
               </div>
-              
+
 
             </div>
-<br>
-<hr color="grey">
-<br>
+            <br>
+            <hr color="grey">
+            <br>
             <div class="row g-2">
 
               <div class="col-6">

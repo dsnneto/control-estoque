@@ -180,4 +180,60 @@ body {
 }
 
 /* FIM TELA DEPARTAMENTOS */
+/* Contêiner para a tabela com rolagem */
+/* Contêiner para a tabela com rolagem */
+.table-wrapper {
+    max-height: 400px; /* Define a altura máxima */
+    overflow-y: auto; /* Habilita a rolagem vertical */
+
+}
+
+/* Tabela com largura 100% e colapsa as bordas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* Permite que as colunas se ajustem automaticamente ao conteúdo */
+}
+
+/* Estilo para as células de dados e cabeçalho */
+th, td {
+    padding: 10px;
+    text-align: left; /* Alinhamento à esquerda */
+    word-wrap: break-word; /* Quebra de palavra para textos longos */
+}
+
+/* Cabeçalho fixo */
+thead th {
+    background-color: white; /* Cor de fundo para o cabeçalho */
+    position: sticky;
+    top: 0;
+    z-index: 2; /* Garante que o cabeçalho fique acima do corpo da tabela */
+    border-bottom: 2px solid #ddd; /* Linha divisória */
+}
+
+/* Cor do fundo das células do corpo */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Rolagem apenas no corpo da tabela */
+.table-wrapper {
+    overflow-x: auto; /* Permite rolagem horizontal quando necessário */
+}
+
+tbody {
+    max-height: 300px; /* Limita a altura do corpo da tabela */
+    overflow-y: auto; /* Permite rolagem vertical */
+}
+
+/* Ajuste da largura das colunas */
+th, td {
+    min-width: 120px; /* Largura mínima para cada coluna */
+    width: auto; /* Permite que as colunas ajustem o tamanho conforme o conteúdo */
+}
+
 
