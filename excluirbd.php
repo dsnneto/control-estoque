@@ -5,16 +5,18 @@
 
         require_once("./conexao/conexao.php");
 
+        // Excluir o produto do banco de dados
         $sql = "DELETE FROM estoque WHERE IDEstoque=:id";
         $comandoSQL = $conexao->prepare($sql);
         $comandoSQL->execute(array(":id" => $id));
 
+        // Verificar se a exclusão foi bem-sucedida
         if($comandoSQL->rowCount() > 0){
-            ("Registro excluído com sucesso!");
+            // Sucesso na exclusão, redirecionar de volta para a página de estoque
             header("location:./estoque.php");
             exit();
-        }
-        else{
-            echo("Entre em contato com o suporte!");
+        } else {
+            // Caso não haja alteração, exibe uma mensagem de erro
+            echo "Erro ao excluir o item. Entre em contato com o suporte!";
         }
     }

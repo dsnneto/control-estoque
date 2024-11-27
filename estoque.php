@@ -84,7 +84,14 @@ require_once './layout/script.php';
                         <td text align="center"><?= $linha["quantidadeEstoque"]; ?></td>
                         <td text align="center"><?= $linha["nomeDepartamento"]; ?></td>
                         <td text align="center"><?= $linha["nomeArmazenamento"]; ?></td>
-                        <td text align="center"><a href="#" class="btn" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome=" <?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>"><img src="./style/icon/lapis.png"></a><a text align="center"><a href="./excluir.php?id=<?= $linha['IDEstoque']; ?>"><img src="./style/icon/cruz.png"></a></td>
+                        <td text align="center"><a href="#" class="btn" data-toggle="modal" data-target="#modalEditar" data-id="<?= $linha['IDEstoque']; ?>" data-nome=" <?= $linha['nomeEstoque']; ?>" data-quantidade="<?= $linha['quantidadeEstoque']; ?>"><img src="./style/icon/lapis.png"></a>
+                        <a text align="center">
+                        <a href="#" class="btn" data-toggle="modal" data-target="#modalConfirmarExcluir" 
+                          data-id="<?= $linha['IDEstoque']; ?>"
+                          data-nome="<?= $linha['nomeEstoque']; ?>"
+                          data-quantidade="<?= $linha['quantidadeEstoque']; ?>">
+                          <img src="./style/icon/cruz.png">
+                          </a></td>
                         <td>
                           <a text aling="center" href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalRetirar"
                             data-id="<?= $linha['IDEstoque'] ?>"
@@ -139,8 +146,6 @@ require_once './layout/script.php';
 <?php
 require_once("./conexao/conexao.php");
 ?>
-
-<!-- Modal para add Produto -->
 <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -208,9 +213,28 @@ require_once("./conexao/conexao.php");
   </div>
 </div>
 
-
-
-<!-- Modal para Editar Produto excluido -->
+<!-- Modal para confirmação de exclusão -->
+<div class="modal fade" id="modalConfirmarExcluir" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarExcluirLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalConfirmarExcluirLabel">Confirmar Exclusão</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="modalMensagem">Tem certeza que deseja excluir o item?</p>
+        <!-- Formulário para Excluir o Produto -->
+        <form method="POST" action="excluirbd.php">
+          <input type="hidden" name="id" id="idEstoqueExcluir"> <!-- ID do item a ser excluído -->
+          <button type="submit" class="btn btn-danger">Excluir</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal para Retirada -->
 <div class="modal fade" id="modalRetirar" tabindex="-1" role="dialog" aria-labelledby="modalRetirarLabel" aria-hidden="true">
