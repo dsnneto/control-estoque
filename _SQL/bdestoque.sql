@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02/12/2024 às 17:45
+-- Tempo de geração: 02/12/2024 às 18:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `departamentos` (
   `IDDepartamento` int(11) NOT NULL,
-  `nomeDep` varchar(11) NOT NULL
+  `nomeDep` varchar(22) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -39,7 +39,9 @@ CREATE TABLE `departamentos` (
 INSERT INTO `departamentos` (`IDDepartamento`, `nomeDep`) VALUES
 (4, 'financeiro'),
 (5, 'administrat'),
-(6, 'bola');
+(6, 'bola'),
+(7, 'sinara'),
+(8, 'administrat');
 
 -- --------------------------------------------------------
 
@@ -61,10 +63,12 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`, `armazenamento`, `departamento`) VALUES
-(9, 'cabo sata', 42, 3, 1, 4),
 (10, 'cabo', 3, 3, 2, 4),
-(11, 'Lucas Rocha', 3, 3, 3, 4),
-(12, 'cabo sata', 3, 3, 1, 4);
+(11, 'Lucas Rocha', 1, 3, 3, 4),
+(12, 'cabo sata', 2, 3, 1, 4),
+(14, 'Lucas Rocha', 1, 3, 1, 4),
+(15, 'teclado', 13, 10, 2, 5),
+(16, 'cabo', 3, 3, 3, 8);
 
 -- --------------------------------------------------------
 
@@ -101,6 +105,13 @@ CREATE TABLE `mov_add` (
   `horaADD` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `mov_add`
+--
+
+INSERT INTO `mov_add` (`IDADD`, `IDProdutoFK`, `IDDepartamentoFK`, `qtdADD`, `dataADD`, `horaADD`) VALUES
+(5, 15, 5, 4, '2024-12-02', '14:32:46');
+
 -- --------------------------------------------------------
 
 --
@@ -122,7 +133,9 @@ CREATE TABLE `mov_retirada` (
 --
 
 INSERT INTO `mov_retirada` (`IDRetirada`, `IDProdutoFK`, `IDDepartamentoFK`, `qtdRetirada`, `respRetirada`, `dataRetirada`, `horaRetirada`) VALUES
-(7, 9, 4, 3, 'Lucas', '2024-12-02', '13:27:01');
+(8, 12, 4, 1, 'Lucas', '2024-12-02', '14:17:02'),
+(9, 11, 4, 2, '3', '2024-12-02', '14:17:07'),
+(10, 15, 5, 1, 'Lucas', '2024-12-02', '14:31:15');
 
 -- --------------------------------------------------------
 
@@ -203,13 +216,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `IDDepartamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `IDDepartamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `IDEstoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `IDEstoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `local_arm`
@@ -221,13 +234,13 @@ ALTER TABLE `local_arm`
 -- AUTO_INCREMENT de tabela `mov_add`
 --
 ALTER TABLE `mov_add`
-  MODIFY `IDADD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDADD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `mov_retirada`
 --
 ALTER TABLE `mov_retirada`
-  MODIFY `IDRetirada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IDRetirada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
