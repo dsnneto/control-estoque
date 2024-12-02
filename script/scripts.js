@@ -20,20 +20,20 @@ $('#modalEditar').on('show.bs.modal', function(event) {
     modal.find('#idProdutoEditar').val(id);
 });
 
-//modal excluir
+// Modal de exclusão
 $('#modalConfirmarExcluir').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget); // Botão que ativou o modal
-    var idEstoque = button.data('id'); // Extrai o ID do botão
-    var nomeEstoque = button.data('nome'); // Extrai o nome do produto
-    var quantidadeEstoque = button.data('quantidade'); // Extrai a quantidade do produto
+    var button = $(event.relatedTarget); // O botão que ativou o modal
+    var idEstoque = button.data('id'); // O ID do produto
+    var nomeEstoque = button.data('nome'); // O nome do produto
     var modal = $(this);
     
-    // Atualiza a mensagem do modal com o nome e a quantidade do item
-    modal.find('#modalMensagem').text('Tem certeza que deseja excluir o item "' + nomeEstoque + '"? Ainda possui ' + quantidadeEstoque + ' no estoque.');
+    // Atualizando a mensagem do modal
+    modal.find('#modalMensagem').text('Tem certeza que deseja excluir o item "' + nomeEstoque + '"?');
 
-    // Atualiza o campo de ID no formulário
+    // Atualizando o valor do campo oculto com o ID do produto
     modal.find('#idEstoqueExcluir').val(idEstoque);
 });
+
 
 
 //scrips add departamentos

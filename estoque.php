@@ -91,12 +91,13 @@ require_once './layout/script.php';
                           <td text align="center"><?= $linha["nomeDepartamento"]; ?></td>
                           <td text align="center"><?= $linha["nomeArmazenamento"]; ?></td>
                           <td>
-                            <a href="#" class="btn" data-toggle="modal" data-target="#modalConfirmarExcluir"
-                              data-id="<?= $linha['IDEstoque']; ?>"
-                              data-nome="<?= $linha['nomeEstoque']; ?>"
-                              data-quantidade="<?= $linha['quantidadeEstoque']; ?>">
-                              <img src="./style/icon/cruz.png">
-                            </a>
+                          <a href="#" class="btn" data-toggle="modal" data-target="#modalConfirmarExcluir"
+                            data-id="<?= $linha['IDEstoque']; ?>"
+                            data-nome="<?= $linha['nomeEstoque']; ?>"
+                            data-quantidade="<?= $linha['quantidadeEstoque']; ?>">
+                            <img src="./style/icon/cruz.png">
+                          </a>
+
 
                             <a text aling="center" href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalRetirar"
                               data-id="<?= $linha['IDEstoque'] ?>"
@@ -147,6 +148,30 @@ require_once './layout/script.php';
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<!-- Modal para confirmação de exclusão -->
+<div class="modal fade" id="modalConfirmarExcluir" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarExcluirLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalConfirmarExcluirLabel">Confirmar Exclusão</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="modalMensagem">Tem certeza que deseja excluir o item?</p>
+        <!-- Formulário para Excluir o Produto -->
+        <form method="POST" action="excluirbd.php">
+          <input type="hidden" name="id" id="idEstoqueExcluir"> <!-- ID do item a ser excluído -->
+
+          <button type="submit" class="btn btn-danger">Excluir</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal para Adicionar Produto -->
 <?php
@@ -219,28 +244,7 @@ require_once("./conexao/conexao.php");
   </div>
 </div>
 
-<!-- Modal para confirmação de exclusão -->
-<div class="modal fade" id="modalConfirmarExcluir" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarExcluirLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalConfirmarExcluirLabel">Confirmar Exclusão</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p id="modalMensagem">Tem certeza que deseja excluir o item?</p>
-        <!-- Formulário para Excluir o Produto -->
-        <form method="POST" action="excluirbd.php">
-          <input type="hidden" name="id" id="idEstoqueExcluir"> <!-- ID do item a ser excluído -->
-          <button type="submit" class="btn btn-danger">Excluir</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- Modal para Retirada -->
 <div class="modal fade" id="modalRetirar" tabindex="-1" role="dialog" aria-labelledby="modalRetirarLabel" aria-hidden="true">
@@ -364,3 +368,18 @@ require_once("./conexao/conexao.php");
     </div>
   </div>
 </div>
+
+<script>
+  $('#modalConfirmarExcluir').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // O botão que ativou o modal
+    var idEstoque = button.data('id'); // O ID do produto
+    var nomeEstoque = button.data('nome'); // O nome do produto
+    var modal = $(this);
+    
+    // Atualizando a mensagem do modal
+    modal.find('#modalMensagem').text('Tem certeza que deseja excluir o item "' + nomeEstoque + '"?');
+
+    // Atualizando o valor do campo oculto com o ID do produto
+    modal.find('#idEstoqueExcluir').val(idEstoque);
+});
+</script>
