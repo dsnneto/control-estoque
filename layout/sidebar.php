@@ -60,7 +60,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link" onclick="setActive(this)">
+            <a href="./suporte.php" class="nav-link" onclick="setActive(this)">
               <i class="nav-icon fas fa-regular fa-comments"></i>
               <p>
                 Suporte

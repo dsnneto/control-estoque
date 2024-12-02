@@ -37,7 +37,7 @@
               <div class="icon">
                 <i class="ion ion-clipboard"></i>
               </div>
-              <a href="#" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="./estoque.php" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -52,7 +52,7 @@
               <div class="icon">
                 <i class="ion ion-android-alert"></i>
               </div>
-              <a href="#" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="./estoque.php" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -67,41 +67,49 @@
               <div class="icon">
                 <i class="ion ion-alert-circled"></i>
               </div>
-              <a href="#" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="./estoque.php" class="small-box-footer">Mais informações<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
         </div>
         <div class="dashboard-tables">
-            <!-- TABELA 2 -->
-          <div class="table-saidas">
-            <h2 id="table-dashboard-title">Últimas retiradas de Itens</h2>
-            <table class="table table-bordered" id="table-dashboard">
-              <thead>
-                <tr>
-                  <th scope="col">Item</th>
-                  <th scope="col">Quantidade</th>
-                  <th scope="col">Data de retirada</th>
-                </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
+  <!-- TABELA 2 - Últimas Retiradas -->
+<div class="table-saidas">
+  <h2 id="table-dashboard-title">Últimas retiradas de Itens</h2>
+  <table class="table table-striped table-bordered" id="table-dashboard">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Data de Retirada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aqui será preenchido com os dados das últimas 3 retiradas -->
+      <?php
+      require_once('./retiradaPbd.php'); // Inclui a conexão com o banco de dados
+
+      // Inicia a consulta para pegar as últimas 3 retiradas
+      if ($totalRegistros > 0) {
+        foreach ($dados as $linha) {
+      ?>
+        <tr>
+          <td><?= htmlspecialchars($linha['nomeProduto']); ?></td>
+          <td><?= htmlspecialchars($linha['qtdRetirada']); ?></td>
+          <td><?= htmlspecialchars($linha['dataRetirada']); ?></td>
+        </tr>
+      <?php
+        }
+      } else {
+      ?>
+        <tr>
+          <td colspan="3" class="text-center">Nenhuma retirada registrada</td>
+        </tr>
+      <?php
+      }
+      ?>
+    </tbody>
+  </table>
+</div>
 </div>
 </section>

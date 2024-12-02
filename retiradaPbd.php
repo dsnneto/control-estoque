@@ -40,8 +40,8 @@ try {
         $sql .= " WHERE " . implode(" AND ", $whereClauses);
     }
 
-    // Ordena os resultados
-    $sql .= " ORDER BY mr.IDRetirada DESC";
+    // Ordena os resultados e limita para as últimas 3 retiradas
+    $sql .= " ORDER BY mr.dataRetirada DESC, mr.horaRetirada DESC LIMIT 3";
 
     // Prepara e executa a consulta
     $stmt = $conexao->prepare($sql);
@@ -61,4 +61,3 @@ try {
     echo "Erro ao carregar os dados: " . $e->getMessage();
     exit;
 }
-?>
