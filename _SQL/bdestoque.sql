@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/11/2024 às 02:43
+-- Tempo de geração: 02/12/2024 às 17:45
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bdestoque`
 --
-CREATE DATABASE IF NOT EXISTS `bdestoque` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `bdestoque`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `bdestoque`;
 -- Estrutura para tabela `departamentos`
 --
 
-DROP TABLE IF EXISTS `departamentos`;
 CREATE TABLE `departamentos` (
   `IDDepartamento` int(11) NOT NULL,
   `nomeDep` varchar(11) NOT NULL
@@ -40,7 +37,9 @@ CREATE TABLE `departamentos` (
 --
 
 INSERT INTO `departamentos` (`IDDepartamento`, `nomeDep`) VALUES
-(4, 'financeiro');
+(4, 'financeiro'),
+(5, 'administrat'),
+(6, 'bola');
 
 -- --------------------------------------------------------
 
@@ -48,7 +47,6 @@ INSERT INTO `departamentos` (`IDDepartamento`, `nomeDep`) VALUES
 -- Estrutura para tabela `estoque`
 --
 
-DROP TABLE IF EXISTS `estoque`;
 CREATE TABLE `estoque` (
   `IDEstoque` int(11) NOT NULL,
   `nomeEstoque` varchar(20) NOT NULL,
@@ -63,9 +61,10 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantidademinimaEstoque`, `armazenamento`, `departamento`) VALUES
-(5, 'makita', 1, 12, 1, 4),
-(6, 'cabo', 3, 20, 2, 4),
-(7, 'HDMI', 12, 2, 2, 4);
+(9, 'cabo sata', 42, 3, 1, 4),
+(10, 'cabo', 3, 3, 2, 4),
+(11, 'Lucas Rocha', 3, 3, 3, 4),
+(12, 'cabo sata', 3, 3, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -73,7 +72,6 @@ INSERT INTO `estoque` (`IDEstoque`, `nomeEstoque`, `quantidadeEstoque`, `quantid
 -- Estrutura para tabela `local_arm`
 --
 
-DROP TABLE IF EXISTS `local_arm`;
 CREATE TABLE `local_arm` (
   `IDLocal` int(11) NOT NULL,
   `nomeLocal` varchar(20) NOT NULL
@@ -94,11 +92,11 @@ INSERT INTO `local_arm` (`IDLocal`, `nomeLocal`) VALUES
 -- Estrutura para tabela `mov_add`
 --
 
-DROP TABLE IF EXISTS `mov_add`;
 CREATE TABLE `mov_add` (
   `IDADD` int(11) NOT NULL,
   `IDProdutoFK` int(11) NOT NULL,
   `IDDepartamentoFK` int(11) NOT NULL,
+  `qtdADD` int(11) NOT NULL,
   `dataADD` date NOT NULL,
   `horaADD` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -109,7 +107,6 @@ CREATE TABLE `mov_add` (
 -- Estrutura para tabela `mov_retirada`
 --
 
-DROP TABLE IF EXISTS `mov_retirada`;
 CREATE TABLE `mov_retirada` (
   `IDRetirada` int(11) NOT NULL,
   `IDProdutoFK` int(11) NOT NULL,
@@ -125,11 +122,7 @@ CREATE TABLE `mov_retirada` (
 --
 
 INSERT INTO `mov_retirada` (`IDRetirada`, `IDProdutoFK`, `IDDepartamentoFK`, `qtdRetirada`, `respRetirada`, `dataRetirada`, `horaRetirada`) VALUES
-(1, 6, 4, 0, '0', '2024-11-23', '22:22:48'),
-(2, 6, 4, 0, '0', '2024-11-23', '22:23:05'),
-(3, 5, 4, 0, '0', '2024-11-23', '22:24:03'),
-(4, 5, 4, 0, '0', '2024-11-23', '22:24:15'),
-(5, 6, 4, 3, 'Lucas', '2024-11-23', '22:41:30');
+(7, 9, 4, 3, 'Lucas', '2024-12-02', '13:27:01');
 
 -- --------------------------------------------------------
 
@@ -137,7 +130,6 @@ INSERT INTO `mov_retirada` (`IDRetirada`, `IDProdutoFK`, `IDDepartamentoFK`, `qt
 -- Estrutura para tabela `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
   `nomeUsuario` varchar(150) NOT NULL,
@@ -211,13 +203,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `IDDepartamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDDepartamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `IDEstoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IDEstoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `local_arm`
@@ -229,13 +221,13 @@ ALTER TABLE `local_arm`
 -- AUTO_INCREMENT de tabela `mov_add`
 --
 ALTER TABLE `mov_add`
-  MODIFY `IDADD` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDADD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `mov_retirada`
 --
 ALTER TABLE `mov_retirada`
-  MODIFY `IDRetirada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IDRetirada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -258,14 +250,14 @@ ALTER TABLE `estoque`
 -- Restrições para tabelas `mov_add`
 --
 ALTER TABLE `mov_add`
-  ADD CONSTRAINT `mov_add_ibfk_1` FOREIGN KEY (`IDProdutoFK`) REFERENCES `estoque` (`IDEstoque`),
+  ADD CONSTRAINT `mov_add_ibfk_1` FOREIGN KEY (`IDProdutoFK`) REFERENCES `estoque` (`IDEstoque`) ON DELETE CASCADE,
   ADD CONSTRAINT `mov_add_ibfk_2` FOREIGN KEY (`IDDepartamentoFK`) REFERENCES `departamentos` (`IDDepartamento`);
 
 --
 -- Restrições para tabelas `mov_retirada`
 --
 ALTER TABLE `mov_retirada`
-  ADD CONSTRAINT `mov_retirada_ibfk_1` FOREIGN KEY (`IDProdutoFK`) REFERENCES `estoque` (`IDEstoque`),
+  ADD CONSTRAINT `mov_retirada_ibfk_1` FOREIGN KEY (`IDProdutoFK`) REFERENCES `estoque` (`IDEstoque`) ON DELETE CASCADE,
   ADD CONSTRAINT `mov_retirada_ibfk_2` FOREIGN KEY (`IDDepartamentoFK`) REFERENCES `departamentos` (`IDDepartamento`);
 COMMIT;
 
