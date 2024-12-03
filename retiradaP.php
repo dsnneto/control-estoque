@@ -25,6 +25,11 @@ require_once './layout/script.php';
     </div><!-- /.container-fluid -->
   </section>
 
+
+  
+          <!-- Botão para download -->
+ <a href="exportarDados.php" class="btn btn-lg btn-success"><i class="fa fa-download"></i></a>
+
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
@@ -33,12 +38,11 @@ require_once './layout/script.php';
           <div class="card">
             <div class="card-header">
               <div class="search-container">
-                <!-- Começo sistema de busca-->
+                
+              <!--busca/filtro-->
                 <form method="GET" action="">
                   <div class="input-group">
-                    <!-- Campo para buscar pelo nome do produto -->
                     <input type="text" name="busca" class="form-control form-control-lg" placeholder="Nome do Produto">
-                    <!-- Campo para buscar pela data -->
                     <input type="date" name="data" class="form-control form-control-lg">
                     <button type="submit" class="btn btn-lg btn-default">
                       <i class="fa fa-search"></i> Buscar
@@ -107,3 +111,5 @@ require_once './layout/script.php';
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+ <!-- Botão para download -->
+ <a href="exportarDados.php" class="btn btn-lg btn-success"><img src="../style/icon/dl.png"></a>
