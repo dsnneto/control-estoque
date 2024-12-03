@@ -222,7 +222,7 @@ tbody tr:nth-child(odd) {
 
 /* Rolagem apenas no corpo da tabela */
 .table-wrapper {
-    overflow-x: auto; /* Permite rolagem horizontal quando necessário */
+    overflow-x: auto; /* rolagem horizontal*/
 }
 
 tbody {

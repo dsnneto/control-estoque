@@ -5,8 +5,10 @@ require_once './layout/navbar.php';
 require_once './layout/sidebar.php';
 require_once './layout/script.php';
 ?>
-
+<!-- POSSIBILIDADE DE RELATÓRIOS E REGISTROS DE REPOSIÇÃO -->
 <!-- Content Wrapper. Contains page content -->
+
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -24,12 +26,7 @@ require_once './layout/script.php';
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
-
   
-          <!-- Botão para download -->
- <a href="exportarDados.php" class="btn btn-lg btn-success"><i class="fa fa-download"></i></a>
-
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
@@ -54,11 +51,12 @@ require_once './layout/script.php';
                   </div>
                 </form>
 
-
+                
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+              
               <div class="table-wrapper">
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
@@ -70,6 +68,7 @@ require_once './layout/script.php';
                       <th>Responsável</th>
                       <th>Data</th>
                       <th>Hora</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
@@ -80,7 +79,7 @@ require_once './layout/script.php';
                         <tr>
                           <td><?php echo htmlspecialchars($linha['nomeProduto']); ?></td>
                           <td><?php echo htmlspecialchars($linha['nomeDepartamento']); ?></td>
-                          <td><?php echo htmlspecialchars($linha['qtdRetirada']); ?></td>
+                          <td>- <?php echo htmlspecialchars($linha['qtdRetirada']); ?></td>
                           <td><?php echo htmlspecialchars($linha['respRetirada']); ?></td>
                           <td><?php echo htmlspecialchars($linha['dataRetirada']); ?></td>
                           <td><?php echo htmlspecialchars($linha['horaRetirada']); ?></td>
@@ -94,7 +93,13 @@ require_once './layout/script.php';
                   </tbody>
                 </table>
               </div>
-            </div>
+              <!-- Botão para download -->
+<div class="text-right">
+    <a href="exportarDados.php" class="btn btn-lg btn-outline-secondary">
+        <img src="./style/icon/download.png" alt="Download">
+    </a>
+</div>
+                </div>
             <!-- /.card-body -->
           </div>
 
@@ -111,5 +116,3 @@ require_once './layout/script.php';
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
- <!-- Botão para download -->
- <a href="exportarDados.php" class="btn btn-lg btn-success"><img src="../style/icon/dl.png"></a>

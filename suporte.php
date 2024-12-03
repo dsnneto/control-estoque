@@ -1,7 +1,7 @@
 <!-- HTML CODE -->
 <?php
 // HTML HEAD
-$title = 'SCE | Departamentos';
+$title = 'SCE | Suporte';
 require_once './layout/head.php';
 
 // NAV HEADER
@@ -14,10 +14,7 @@ require_once './layout/sidebar.php';
 
 
 ?>
-
-
-
-
+ 
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -44,13 +41,13 @@ require_once './layout/sidebar.php';
       <h4>Informações de Contato</h4>
       <ul class="list-unstyled">
         <li><strong>Telefone:</strong> +55 (18) 98169-5376</li>
-        <li><strong>E-mail:</strong> suporte@estoque-etec.com</li>
+        <li><strong>E-mail:</strong> suporte@gmail.com</li>
         <li><strong>WhatsApp:</strong> <a href="https://wa.me/5518981695376">Clique aqui para iniciar a conversa</a></li>
         <li><strong>Horário de Atendimento:</strong> Segunda a Sexta, das 9h às 18h</li>
       </ul>
     </div>
 
-    <!-- Formulário de Contato -->
+    <!-- Formulário de Contato / futuramente enviar todos formulários preenchidos para tela de solicitações de suporte" -->
     <div class="col-md-6">
       <h4>Formulário de Contato</h4>
       <form>
@@ -71,6 +68,8 @@ require_once './layout/sidebar.php';
     </div>
   </div>
 
+
+  <!-- na central de ajuda, direcionar para tela com instruções ilustradas de cada possível problema -->
   <div class="mt-5">
     <h4>Outras Formas de Suporte</h4>
     <p>Você também pode acessar nossa <a href="#">central de ajuda</a> ou explorar as perguntas frequentes <a href="#">aqui</a>.</p>

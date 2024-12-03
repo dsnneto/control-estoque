@@ -1,14 +1,12 @@
 <?php
 require_once("./conexao/conexao.php");
 
-$totalRegistros = 0; // Inicializa a variável antes do bloco try-catch
+$totalRegistros = 0; 
 
 try {
-    // Verifica se foi realizada uma busca por nome ou por data
     $busca = isset($_GET['busca']) ? $_GET['busca'] : '';  // Busca por nome do produto
     $dataFiltro = isset($_GET['data']) ? $_GET['data'] : '';  // Filtro de data
 
-    // Inicia a consulta SQL
     $sql = "
         SELECT 
             mr.IDRetirada,
@@ -26,27 +24,23 @@ try {
         LEFT JOIN departamentos d ON mr.IDDepartamentoFK = d.IDDepartamento
     ";
 
-    // Adiciona as condições de filtro (nome e/ou data), se aplicáveis
-    $whereClauses = [];  // Array para armazenar as cláusulas WHERE
+    $whereClauses = [];  
     if (!empty($busca)) {
-        $whereClauses[] = "e.nomeEstoque LIKE :busca";  // Filtro por nome do produto
+        $whereClauses[] = "e.nomeEstoque LIKE :busca";  
     }
     if (!empty($dataFiltro)) {
-        $whereClauses[] = "mr.dataRetirada = :data";  // Filtro por data
+        $whereClauses[] = "mr.dataRetirada = :data";  
     }
 
-    // Se houver condições de filtro, adiciona a cláusula WHERE
+    
     if (!empty($whereClauses)) {
         $sql .= " WHERE " . implode(" AND ", $whereClauses);
     }
 
-    // Ordena os resultados e limita para as últimas 3 retiradas
-    $sql .= " ORDER BY mr.dataRetirada DESC, mr.horaRetirada DESC LIMIT 3";
+    $sql .= " ORDER BY mr.dataRetirada DESC, mr.horaRetirada DESC LIMIT 10";
 
-    // Prepara e executa a consulta
     $stmt = $conexao->prepare($sql);
 
-    // Liga os parâmetros de busca, se necessário
     if (!empty($busca)) {
         $stmt->bindValue(':busca', '%' . $busca . '%', PDO::PARAM_STR);
     }
@@ -56,7 +50,7 @@ try {
 
     $stmt->execute();
     $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $totalRegistros = $stmt->rowCount();  // Atualiza a variável com o número de registros
+    $totalRegistros = $stmt->rowCount();  
 } catch (PDOException $e) {
     echo "Erro ao carregar os dados: " . $e->getMessage();
     exit;
